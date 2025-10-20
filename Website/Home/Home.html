@@ -45,14 +45,6 @@
     }
 
     /* ========== HERO SECTION ========== */
-    header {
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
-                  url('sofa-banner.jpg') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding-top: 120px;
-    }
 
     header h1 {
       font-size: 2.8rem;
@@ -181,6 +173,46 @@ footer a:hover {
   transform: translateY(-3px);
 }
 
+header {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none; /* remove old background */
+}
+
+
+.hero-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.5);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.3);
+  z-index:1;
+}
+
+
+
   </style>
 </head>
 
@@ -204,12 +236,20 @@ footer a:hover {
   </nav>
 
   <!-- ========== HERO SECTION ========== -->
-  <header id="home">
+<header id="home" style="position:relative; height:100vh; overflow:hidden; text-align:center;">
+  <video autoplay loop muted playsinline style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;">
+    <source src="barish_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="hero-text" style="position:relative; z-index:2; color:white;">
     <h1>Comfort. Elegance. Oxford.</h1>
     <p>Discover timeless designs built with modern craftsmanship — sofas for every home, office, and lifestyle.</p>
-    <iframe src="" frameborder="0"></iframe>
-    <br><hr>
-  </header>
+  </div>
+
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3); z-index:1;"></div>
+</header>
+
 
   <!-- ========== BRANDS SECTION ========== -->
   <main>
@@ -232,16 +272,18 @@ footer a:hover {
 
       <hr><br>
       <div style="text-align:center;">
-        <h2 class="brand-title">Roche Bobois</h2>
-      </div>
-      <div id="brand3" class="card-container"></div>
-      <a href="#" class="more-btn">More Products from Roche Bobois</a>
+  <h2 class="brand-title">Flexform</h2>
+</div>
+<div id="brand3" class="card-container"></div>
+<a href="#" class="more-btn">More Products from Flexform</a>
+
      <hr><br>
       <div style="text-align:center;">
         <h2 class="brand-title">Natuzzi Italia</h2>
       </div>
       <div id="brand4" class="card-container"></div>
       <a href="#" class="more-btn">More Products from Natuzzi Italia</a>
+    <hr><br>
     
       <footer style="background:#111; color:#ccc; padding:50px 20px 20px; margin-top:80px;">
   <div class="container">
@@ -351,35 +393,34 @@ footer a:hover {
       material: "Solid Wood + Fabric" }
     ];
 
-      // ✅ Roche Bobois — all working sofa images
-const rocheBobois = [
+      // ✅ flexform — all working sofa images
+const flexform = [
   {
-    name: "Mah Jong Sofa",
-    img: "https://www.roche-bobois.com/medias/sys_master/images/hfa/h59/9125352349726.jpg",
-    price: "Rs. 990,000",
-    material: "Premium Velvet & Modular Design"
-  },
-  {
-    name: "Bubble Sofa",
-    img: "https://www.roche-bobois.com/medias/sys_master/images/h2f/h73/9125360336926.jpg",
-    price: "Rs. 1,250,000",
-    material: "High-Resilience Foam & Fabric"
-  },
-  {
-    name: "Profile Sofa",
-    img: "https://www.roche-bobois.com/medias/sys_master/images/hf4/h56/9125359878174.jpg",
-    price: "Rs. 880,000",
-    material: "European Leather"
-  },
-  {
-    name: "Scenario Sofa",
-    img: "https://www.roche-bobois.com/medias/sys_master/images/hb5/h0e/9125377134622.jpg",
+    name: "Groundpiece Sofa",
+    img: "https://via.placeholder.com/300x220?text=Groundpiece", // test image
     price: "Rs. 1,050,000",
-    material: "Eco-Friendly Fabric"
+    material: "Premium Leather & Fabric"
+  },
+  {
+    name: "Feeling Sofa",
+    img: "https://via.placeholder.com/300x220?text=Feeling",
+    price: "Rs. 1,200,000",
+    material: "Soft Fabric & Cushions"
+  },
+  {
+    name: "Charles Sofa",
+    img: "https://via.placeholder.com/300x220?text=Charles",
+    price: "Rs. 1,350,000",
+    material: "Italian Leather & Modular Design"
+  },
+  {
+    name: "Brandon Sofa",
+    img: "https://via.placeholder.com/300x220?text=Brandon",
+    price: "Rs. 1,500,000",
+    material: "Premium Fabric & Solid Frame"
   }
 ];
 
-// ✅ Natuzzi Italia — all working sofa images
 const natuzziItalia = [
   {
     name: "Revive Recliner Sofa",
@@ -407,6 +448,8 @@ const natuzziItalia = [
   }
 ];
 
+
+
     // FUNCTION TO SHOW CARDS
     function showSofas(brandArray, containerId) {
       const box = document.getElementById(containerId);
@@ -427,10 +470,15 @@ const natuzziItalia = [
     }
 
     // SHOW ALL BRANDS
+   document.addEventListener("DOMContentLoaded", function() {
+  // SHOW ALL BRANDS
     showSofas(poltronaFrau, "brand1");
     showSofas(ligneRoset, "brand2");
-    showSofas(rocheBobois, "brand3");
+    showSofas(flexform, "brand3");
     showSofas(natuzziItalia, "brand4");
+});
+
+
 
   </script>
 </body>
