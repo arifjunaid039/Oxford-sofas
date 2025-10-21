@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxford Sofas</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #111, #1a1a1a);
+      color: #f5f5f5;
+      margin: 0;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background-color: #222;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      color: white !important;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-link {
+      color: white !important;
+    }
+
+    .nav-link:hover {
+      color: #d4af37 !important;
+      text-shadow: 0 0 10px #d4af37;
+    }
+
+    section {
+      padding: 100px 40px 80px;
+      margin-top: 60px;
+    }
+
+    .brand-title {
+      text-align: center;
+      font-size: 2rem;
+      border-bottom: 3px solid #f5f5f5;
+      display: inline-block;
+      margin-bottom: 40px;
+    }
+
+    /* ========== CARD GRID ========== */
+    
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .btn {
+      background-color: #d4af37;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #222;
+      color: #d4af37;
+    }
+
+    .more-btn {
+      display: block;
+      width: fit-content;
+      margin: 50px auto 0;
+      background: linear-gradient(45deg, #d4af37, #b8962e);
+      color: white;
+      font-weight: 600;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .more-btn:hover {
+      background: #222;
+      color: #d4af37;
+    }
+
+    /* ========== RESPONSIVE GRID ========== */
+    @media (max-width: 992px) {
+      .card-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .card-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== RESPONSIVE GRID ========== */
+    @media (max-width: 992px) {
+      .card-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .card-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    footer {
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #222);
+      border-top: 3px solid #d4af37;
+      color: #ccc;
+      border-radius: 30px;
+      margin-top: 80px;
+      padding: 60px 20px 25px;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Oxford Sofas</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="menu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Brand.html">Brands</a></li>
+          <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN SECTION -->
+  <section>
+    <div class="text-center">
+      <h2 class="brand-title" style="color: #b8962e;">Flexform Collection</h2>
+    </div>
+
+    <div class="card-container" id="sofaCards">
+      <!-- Cards from JSON will load here -->
+    </div>
+  </section>
+
+        <!-- ========== FOOTER ========== -->
+<footer style="background:#0e0e0e; color:#ccc; padding:60px 20px 25px; margin-top:100px;">
+  <div class="container">
+    <div class="row text-center text-md-start align-items-start">
+
+      <!-- Column 1 -->
+      <div class="col-md-4 mb-4">
+        <h3 style="color:#d4af37; font-weight:700;">Oxford Sofas</h3>
+        <p style="font-size:15px; line-height:1.7;">
+          Experience the finest in Italian craftsmanship elegant, luxurious, and built to last. Oxford Sofas brings timeless comfort to every home.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col-md-4 mb-4">
+        <h5 style="color:#d4af37; margin-bottom:15px;">Quick Links</h5>
+        <ul style="list-style:none; padding:0; line-height:2;">
+          <li><a href="Home.html" style="text-decoration:none; color:#ccc;">Home</a></li>
+          <li><a href="Brand.html" style="text-decoration:none; color:#ccc;">Brands</a></li>
+          <li><a href="Compare.html" style="text-decoration:none; color:#ccc;">Compare</a></li>
+          <li><a href="Contact.html" style="text-decoration:none; color:#ccc;">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="col-md-4 mb-4">
+        <h5 style="color:#d4af37; margin-bottom:15px;">Contact Us</h5>
+        <p><i class="bi bi-geo-alt-fill" style="color:#d4af37;"></i> Karachi, Pakistan</p>
+        <p><i class="bi bi-envelope-fill" style="color:#d4af37;"></i> info@oxfordsofas.com</p>
+        <p><i class="bi bi-telephone-fill" style="color:#d4af37;"></i> +92 321 4567890</p>
+
+        <!-- Social Icons -->
+        <div style="margin-top:20px;">
+            <a href="https://www.facebook.com/" class="social-icon"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.youtube.com/" class="social-icon"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr style="border-color:#333; margin:30px 0;">
+
+    <div class="text-center" style="font-size:14px;">
+      © 2025 <span style="color:#d4af37;">Oxford Sofas</span> All Rights Reserved by Oxford Sofas<br>
+    </div>
+  </div>
+</footer>
+
+<script>
+    const jsonData = [
+      {"name": "Groundpiece Sofa", 
+      "price": "Rs. 490,000",
+      "material": "Fabric + Leather Modular Design", 
+      "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2F56c5d8a4f39914a7615dedb0683db4df55fa11b9.x1680.webp%2F011M11_GROUNDPIECE_SECTIONAL_SET_15_Q.jpg&w=3840"},
+
+      {"name": "Feel Good Sofa", 
+      "price": "Rs. 450,000", 
+      "material": "Leather Upholstery with Metal Legs", 
+      "img": "https://snoopy.archdaily.com/images/archdaily/catalog/uploads/photo/image/240573/full_feelgood-2-b.jpg?format=webp&width=840"},
+
+      {"name": "Soft Dream Sofa", 
+      "price": "Rs. 470,000", 
+      "material": "Feather Cushion | Metal Frame", 
+      "img": "https://images.openai.com/thumbnails/url/gWnBOXicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4Oj0gpS_Pw9LassvQIsIgPDPI28E0ydbcIDK3KyQursHT2NqsoLy8uynVOVyu2NTQAAALmJQM"},
+
+      {"name": "Cestone Sofa", 
+      "price": "Rs. 510,000", 
+      "material": "Leather Woven Back | Fabric Cushions", 
+      "img": "https://images.openai.com/thumbnails/url/zR2Z-3icu5mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4MCo6KMDK2dAsKD3EtKgvSDQ7yKC920k1yLw1wLTBxd0otczHNMfX1DA9NVysGAIRuI3o"},
+
+      {"name": "Lario Sofa", 
+      "price": "Rs. 460,000", 
+      "material": "Modular Fabric Sofa", 
+      "img": "https://img.edilportale.com/news/j_43972_03.jpg"},
+
+      {"name": "Gregory Sofa", 
+      "price": "Rs. 530,000", 
+      "material": "Leather | Fabric Blend | Metal Base", 
+      "img": "https://www.undomus.com/89245-large_default/gregory-xl-modular-sofa-flexform.jpghttps://cdn.flexform.it/flexformweb/gregory-gallery-04.jpg"},
+
+      {"name": "Campiello Sofa",
+      "price": "Rs. 520,000", 
+      "material": "Soft Back Cushions | Fabric Upholstery", 
+      "img": "https://images.openai.com/static-rsc-1/LrdGIylso08togp9QXIiyzo_xzkBljVNQrVrlTFNL-ZDiE0mqBVDoXpkZrGwMalHxhDTbHGnt7WnxxeQZc8e_jXD91BYwPfRIGx4aj0NumRXDZE-fzBCShSw5M3Ctzj8Dejh4iUF9wPf5bGiZXzSZA"},
+
+      {"name": "Asolo Sofa", 
+      "price": "Rs. 480,000", 
+      "material": "Leather Upholstery | Down Cushions", 
+      "img": "https://images.openai.com/thumbnails/url/tizE3Hicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4qMkz28fXyq4gICKvyKTfwSDPKCCwPdAz2csnzCPcoCjUysnTyyPNOqoxwVCu2NTQAAAQtJIE"},
+
+      {
+    "name": "Flexform LoungeScape Sofa",
+    "price": "Rs. 520,000",
+    "material": "Premium Fabric | Modular Design | Aluminum Base",
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2Fa2c2e906b358369ff5c35caf7c662a5d55e4b228.1680x1680.webp%2F02D307_LOUNGESCAPE_SECTIONAL_07.png&w=3840"
+  },
+
+  {
+    "name": "Flexform Perry Up Sofa",
+    "price": "Rs. 480,000",
+    "material": "Soft Nubuck Leather | Feather Cushions | Metal Legs",
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2Fc6e853267b3ab594b4a5d87c618539161e841d69.1680x1680.webp%2F02A903_PERRY%2520UP_STANDALONE_01.png&w=3840"
+  },
+
+  {
+    "name": "Flexform Supermax Sofa",
+    "price": "Rs. 510,000",
+    "material": "Italian Leather | High-Back Design | Steel Frame",
+    "img": "https://boulevard.co/wp-content/uploads/2023/10/flexform-2-19.png"
+  },
+
+  {
+    "name": "Flexform Max Sofa",
+    "price": "Rs. 460,000",
+    "material": "Top-Grain Leather | Minimalist Curved Shape",
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2F1f822952914e632fb39b813634f67ec605baca72.1680x1680.webp%2F011903_MAX_STANDALONE_03.png&w=3840"
+  },
+
+  {
+    "name": "Flexform Guscio Sofa",
+    "price": "Rs. 495,000",
+    "material": "Fabric Upholstery | Wood Base | Down-Filled Cushions",
+    "img": "https://images.openai.com/thumbnails/url/tpYyRXicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw6MMAwsKfcsDQs3NAmv8AvNyy0tCYx0Dg4zLMw0LzUxLDZzy9F1CS6pMApzVCu2NTQAAA4iJMQ"
+  },
+
+  {
+    "name": "Flexform Edmond Sofa",
+    "price": "Rs. 530,000",
+    "material": "Italian Leather | Tufted Design | Metal Frame",
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2F35a9df71a6ca72dc680f07a621d12a3efccc98df.1680x1680.webp%2F015Z02_EDMOND_STANDALONE_01.png&w=3840"
+  },
+
+  {
+    "name": "Flexform Adda Sofa",
+    "price": "Rs. 505,000",
+    "material": "Soft Fabric | Metal Legs | Adjustable Cushions",
+    "img": "https://www.flexformcomo.com/images/prodotti/divani-flexform/adda-flexform/adda-flexform3.jpg"
+  },
+
+  {
+    "name": "Flexform Evergreen Sofa",
+    "price": "Rs. 470,000",
+    "material": "Luxury Leather | Modular Sections | Wooden Base",
+    "img": "https://www.switchmodern.com/images/uploads/flexform-evergreen-sectional-sofa-antonio-citterio-1400x800-1.jpg"
+  }
+    ];
+
+    const container = document.getElementById("sofaCards");
+    jsonData.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <div class="card-content">
+          <h5>${item.name}</h5>
+          <p><strong>Material:</strong> ${item.material}</p>
+          <p class="price">${item.price}</p>
+          <a href="Booking.html" class="btn">Buy Now</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
