@@ -14,7 +14,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     }
 
     /* ========== BASIC STYLING ========== */
@@ -31,19 +31,19 @@
       color: #e60000;
       text-decoration: none;
     }
+    
 
     h1 {
       text-align: center;
       color: #e60000;
       margin-bottom: 40px;
-      font-size: 3rem;
       margin-top: 50PX;}
 
     h2 {
       text-align: center;
-      color: #d4af37;
+      color: #ffd700 ;
       margin-bottom: 40px;
-      font-size: 3rem;
+      font-size: 80px;
     }
 
      /* ========== NAVBAR ========== */
@@ -82,7 +82,7 @@ flex-direction: column;
 
 /* ========== SECTION ========== */
     section {
-      padding: 80px 40px;
+      padding: 80px 0px!important;
     }
 
     .brand-title {
@@ -115,77 +115,64 @@ header::after {
   z-index:1;
 }
 
-.section1 .text,
-.section1 .image {
-  max-width: 600px;
-  width: 100%;
-}
-.section1 .image img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 10px;
-  padding: 10px;
-}
 
 
-.section2, .section3, .section4, .section5 {
+
+/* Common layout for all sections */
+.section1, .section2, .section3, .section4, .section5 {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
-  justify-content: center;  
-  align-items: flex-start;
-  padding: 10px;
+  padding: 60px 20px;
 }
 
-.section2 .text, .section2 .image,
-.section3 .text, .section3 .image,
-.section4 .text, .section4 .image,
-.section5 .text, .section5 .image {
-  max-width: 600px;
+/* Shared text styling */
+.section1 .text, .section2 .text, .section3 .text,
+.section4 .text, .section5 .text {
+  max-width: 800px;
   width: 100%;
-}
-
-.section2 .text p, .section3 .text p,
-.section4 .text p, .section5 .text p {
   line-height: 1.6;
-  text-align: left;
 }
 
-.section2 .image img, .section3 .image img,
-.section4 .image img, .section5 .image img {
-  max-width:600px;
-  width: 100%;
+/* Shared image styling */
+.section1 .image, .section2 .image, .section3 .image,
+.section4 .image, .section5 .image {
+  width: auto;
   height: auto;
+  max-width: 800px;
+}
+
+.section1 .image img, .section2 .image img, .section3 .image img,
+.section4 .image img, .section5 .image img {
+  width: 100%;
   border-radius: 10px;
 }
 
-.section5{
-    margin-bottom: 0px;
+/* Alternating alignment */
+.section1 .text, .section3 .text, .section5 .text {
+  text-align: right;
+  margin-left: auto;
+  
 }
 
-    html {
-  scroll-behavior: smooth;
+.section2 .text, .section4 .text {
+  text-align: left;
+  margin-right: auto;
+}
+
+.section1 .image, .section3 .image, .section5 .image {
+  margin-right: auto;
+}
+
+.section2 .image, .section4 .image {
+  margin-left: 750px;
+  
 }
 
 
-    /* ========== HERO SECTION ========== */
 
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
 
-    header p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    /* ========== SECTION ========== */
-    section {
-      padding: 80px 40px;
-    }
 
     .brand-title {
       text-align: center;
@@ -306,61 +293,97 @@ footer span {
   <hr><br>
 
 <div class="container">
-  <h2><b><i>What is Oxford Sofa?</i></b></h2>
+  <h2><b><i>What is Oxford Sofa? </i></b></h2>
 
   <section class="section1">
     <div class="text">    
       <p>
-       Oxford Sofa is more than just furniture it,s a blend of comfort, luxury, and modern design. Every sofa we create is crafted with high-quality materials, elegant stitching, and stylish looks to fit perfectly in any home. Our goal is to bring you timeless comfort that lasts for years, making every moment of relaxation special. With Oxford Sofa, your home becomes a space of beauty, elegance, and true comfort.
+       Oxford Sofa is not only furniture it,s a fusion of luxury, comfort, and contemporary style. Each sofa we make is designed with superior materials, beautiful stitching, and sleek appearances to perfectly place in your home. Our mission is to provide you with long-lasting timeless comfort to last for decades, and every moment of rest a treasured one. Oxford Sofa makes your home a haven of splendor, elegance, and genuine comfort.
+
+
       </p>
     </div>
+    <br>
     <br>
     <div class="image">
       <img class="img-fluid" src="https://sunsgoods.com/wp-content/uploads/2024/08/Modern-living-room-with-a-large-sectional-sofa-marble-coffee-table-and-contemporary-decor.webp" alt="Image">
     </div>
   </section>
 
-  <hr>
-  <section class="section2">
-    <div class="text">
-      <h2><b><i>Who is making website?</i></b></h2>
-      <p>Oxford Sofas is proudly created and managed by a passionate team of young developers and designers Junaid, Wasil, Misem, and Aaliyan. Together, we share one vision: to build a modern, elegant, and user-friendly platform where quality and comfort meet innovation. Our teamwork, creativity, and dedication drive the success and future of Oxford Sofas.</p>
-      <img class="img-fluid" src="https://quicklyhire.com/wp-content/uploads/2024/06/team-meeting-collaboration.png" alt="image" >
-    </div>
-  </section>
+  
+  
+<hr>
+<section class="section2">
+    <h2><b><i>Who is making website?</i></b></h2>
+    <br>
+    <br>
+  <div class="text text-start">
+   
+    <p>
+      Oxford Sofas is proudly designed and operated by an enthusiastic group of young designers and developers: Junaid, Wasil, Misem, and Aaliyan. We all have one goal to develop a contemporary, sophisticated, and friendly platform where quality, comfort come together with innovation. Our collective efforts, imagination, and devotion propel the success and future of Oxford Sofas.
+    </p>
+    <br>
+    <br>
+  </div>
+  <div class="image text-end">
+    <img class="img-fluid" src="https://quicklyhire.com/wp-content/uploads/2024/06/team-meeting-collaboration.png" alt="Team Working">
+  </div>
+</section>
 
-  <hr>
-  <section class="section3">
-    <div class="text">
-      <h2><b><i>Our Mission</i></b></h2>
-      <p>t Oxford Sofas, our mission is to bring elegance, comfort, and durability together in every design. We aim to create sofas that are not just pieces of furniture but a reflection of luxury and relaxation. Each sofa is crafted with care, premium materials, and modern design to fit every home and lifestyle. Our goal is to make every living space more stylish, cozy, and welcoming because we believe true comfort begins with Oxford Sofas.</p>
-      <img class="img-fluid" src="https://images.openai.com/thumbnails/url/_nmbNXicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw40qfRO9c8OrnIsz6-ySE1Ni0p2Twp2yzdMMTascvZO8UkscHE39Qk398h2VCu2NTQAABb-JN4" alt="Image">
-    </div>
-  </section>
+<hr>
+<section class="section3">
+    <h2><b><i>Our Mission</i></b></h2>
+    <br>
+    <br>
+  <div class="text text-end">
+    
+    <p>
+      At Oxford Sofas, our vision is to combine elegance, comfort, and durability into each of our designs. We strive to make sofas that are not only furniture but an embodiment of luxury and relaxation. Each sofa is made with attention, high-quality materials, and contemporary design to suit every home and life. Our aim is to turn every living space into a more stylish, cozy, and inviting place because we believe the key to true comfort starts at Oxford Sofas.
+    </p>
+    <br>
+    <br>
+  </div>
+  <div class="image text-start">
+    <img class="img-fluid" src="https://images.openai.com/thumbnails/url/_nmbNXicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw40qfRO9c8OrnIsz6-ySE1Ni0p2Twp2yzdMMTascvZO8UkscHE39Qk398h2VCu2NTQAABb-JN4" alt="Mission Image">
+  </div>
+</section>
 
-  <hr>
-  <section class="section4">
-    <div class="text">
-      <h2><b><i>Reveloution of sofa </i></b></h2>
-      <p>The revolution of sofas shows how comfort and style have evolved with time. From simple wooden benches to luxurious, soft, and stylish designs, sofas have become a symbol of relaxation and elegance. Modern sofas now blend technology with comfort from recliners and smart fabrics to eco-friendly materials. This journey reflects how design, innovation, and lifestyle have come together to redefine the meaning of comfort in every home.</p>
-      <img class="img-fluid" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg1VD2bEWHPnxak52_uAVf8Hbe6r4xkOeITpASTM0n-jj6rCQzJyshjGmZPuaDj6ioXy0Nq1T4PHw54RuX31LzA8Ou5_fxQgfMcIMBTMZ7_P1RFPIfrlvMUWFjFmMYoq3ZBph9EHTvlg1e/s1600/furniture%2Bdesign%2Btimeline.png" alt="Image">
-    </div>
-  </section>
+<hr>
+<section class="section4">
+    <h2><b><i>Revolution of Sofas</i></b></h2>
+    <br>
+    <br>
+  <div class="text text-start">
+    
+    <p>
+      The sofa revolution demonstrates how style and comfort have transformed over time. From basic wooden benches to rich, soft, and fashionable styles, sofas have become synonymous with comfort and elegance. Contemporary sofas now incorporate technology with comfort—ranging from recliners and intelligent fabrics to sustainable materials. This transformation indicates how lifestyle, innovation, and design have combined to redefine the concept of comfort in each dwelling.
+    </p>
+    <br>
+    <br>
+  </div>
+  <div class="image text-end">
+    <img class="img-fluid" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg1VD2bEWHPnxak52_uAVf8Hbe6r4xkOeITpASTM0n-jj6rCQzJyshjGmZPuaDj6ioXy0Nq1T4PHw54RuX31LzA8Ou5_fxQgfMcIMBTMZ7_P1RFPIfrlvMUWFjFmMYoq3ZBph9EHTvlg1e/s1600/furniture%2Bdesign%2Btimeline.png" alt="Sofa Evolution">
+  </div>
+</section>
 
-  <hr>
-  <section class="section5">
-    <div class="text">
-      <h2><b><i>Future of our website</i></b></h2>
-      <p>Hey everyone! The future of Oxford Sofas is something I, am truly excited about, and I want to share it with you. Right now, we focus on giving you the best sofa designs, elegant comfort, and premium quality that you can trust but this is just the beginning. In the near future, our website will become much more than just a place to browse or buy sofas. We are planning to add new tools where you can customize your sofa design, choose fabrics and colors, and even visualize your sofa in your own room using 3D view technology.
+<hr>
+<section class="section5">
+    <h2><b><i>Future of our website</i></b></h2>
+    <br>
+    <br>
+  <div class="text text-end">
+    
+    <p>
+      Hello everyone! The future of Oxford Sofas is something I am really looking forward to, and I'm excited to share my vision with you. At this point in time, we focus on offering you the best sofa styles, beautiful comfort and quality that you can count on-but that's just the beginning. Eventually, you will soon be able to use our website to personalize designs, choose fabrics and colors and even see what sofas will look like in your room using augmented reality. You'll also be able to see decor ideas for your home, care for your furniture, including inspiration, and ideas for your home. The ordering process will be seamless, you'll be able to track your delivery and - hang out with other people who love furniture, too! Oxford Sofas is becoming a journey to redefine comfort, design and luxury for your home!
+    </p>
+    <br>
+    <br>    
+  </div>
+  <div class="image text-start">
+    <img class="img-fluid" src="https://lindamerrill.com/wp-content/uploads/2019/03/A-visual-compendium-of-sitcom-sofas.png" alt="Future Vision">
+  </div>
+</section>
 
-We also aim to introduce a section for interior design ideas, care tips, and home décor inspiration, so you can create the perfect living space with ease. Another exciting step will be making the buying process smoother with online orders, secure payments, and fast delivery tracking.
-
-We want to build a strong community where furniture lovers can share their experiences, décor styles, and creative setups. Our mission for the future is clear to make Oxford Sofas the go-to platform for everything related to comfort, design, and home luxury. Step by step, we are building something bigger, smarter, and more stylish for you.</p>
-      <img class="img-fluid" src="https://lindamerrill.com/wp-content/uploads/2019/03/A-visual-compendium-of-sitcom-sofas.png" alt="Image">
-    </div>
-  </section>
-</div>
-<hr><br>
 
 <!-- ========== FOOTER (Exactly like Home) ========== -->
 <footer class="footer">
@@ -392,9 +415,9 @@ We want to build a strong community where furniture lovers can share their exper
         <p><i class="bi bi-telephone-fill" style="color:#d4af37;"></i> +92 321 4567890</p>
 
         <div style="margin-top:20px;">
-           <a href="https://www.facebook.com/" class="social-icon"><i class="bi bi-facebook"></i></a>
-          <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.youtube.com/" class="social-icon"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
     </div>
@@ -407,5 +430,8 @@ We want to build a strong community where furniture lovers can share their exper
   </div>
 </footer>
 
+
+<script>
+</script>
 </body>
 </html>

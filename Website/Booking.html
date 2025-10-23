@@ -48,7 +48,70 @@
       display: inline-block;
       margin-bottom: 40px;
     }
- 
+
+    .contact-container {
+      max-width: 600px;
+      margin: 120px auto 60px;
+      padding: 30px;
+      background-color: #000;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    }
+
+    .contact-container h2 {
+      color: gold;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      background-color: #1a1a1a;
+      color: #fff;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: gold;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 120px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: gold;
+      color: #000;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #e6c200;
+    }
+
     footer {
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #222);
       border-top: 3px solid #d4af37;
@@ -78,52 +141,169 @@
     </div>
   </nav>
 
-  <footer style="background:#0e0e0e; color:#ccc; padding:60px 20px 25px; margin-top:100px;">
-  <div class="container">
-    <div class="row text-center text-md-start align-items-start">
+  <!-- CONTACT FORM -->
+  <section class="contact-container">
+    <h2>Oxford Sofa</h2>
+    <form onsubmit="return false;" id="sofaForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-      <!-- Column 1 -->
-      <div class="col-md-4 mb-4">
-        <h3 style="color:#d4af37; font-weight:700;">Oxford Sofas</h3>
-        <p style="font-size:15px; line-height:1.7;">
-          Experience the finest in Italian craftsmanship elegant, luxurious, and built to last. Oxford Sofas brings timeless comfort to every home.
-        </p>
-      </div>
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-      <!-- Column 2 -->
-      <div class="col-md-4 mb-4">
-        <h5 style="color:#d4af37; margin-bottom:15px;">Quick Links</h5>
-        <ul style="list-style:none; padding:0; line-height:2;">
-          <li><a href="Home.html" style="text-decoration:none; color:#ccc;">Home</a></li>
-          <li><a href="Brand.html" style="text-decoration:none; color:#ccc;">Brands</a></li>
-          <li><a href="Compare.html" style="text-decoration:none; color:#ccc;">Compare</a></li>
-          <li><a href="Contact.html" style="text-decoration:none; color:#ccc;">Contact</a></li>
-        </ul>
-      </div>
+      <label for="sofa">Your Sofa Name</label>
+      <input type="text" id="sofa" name="sofa" placeholder="Enter your sofa name" required>
 
-      <!-- Column 3 -->
-      <div class="col-md-4 mb-4">
-        <h5 style="color:#d4af37; margin-bottom:15px;">Contact Us</h5>
-        <p><i class="bi bi-geo-alt-fill" style="color:#d4af37;"></i> Karachi, Pakistan</p>
-        <p><i class="bi bi-envelope-fill" style="color:#d4af37;"></i> info@oxfordsofas.com</p>
-        <p><i class="bi bi-telephone-fill" style="color:#d4af37;"></i> +92 321 4567890</p>
+      <label for="number">Your Number</label>
+      <input type="tel" id="number" name="number" placeholder="03XXXXXXXXX" maxlength="11" pattern="[0-9]{11}" required>
 
-        <!-- Social Icons -->
-        <div style="margin-top:20px;">
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" placeholder="Write something..."></textarea>
+
+      <button type="submit">Book Sofa</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row text-center text-md-start align-items-start">
+        <div class="col-md-4 mb-4">
+          <h3 style="color:#d4af37; font-weight:700;">Oxford Sofas</h3>
+          <p style="font-size:15px; line-height:1.7;">
+            Experience the finest in Italian craftsmanship — elegant, luxurious, and built to last. Oxford Sofas brings timeless comfort to every home.
+          </p>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <h5 style="color:#d4af37; margin-bottom:15px;">Quick Links</h5>
+          <ul style="list-style:none; padding:0; line-height:2;">
+            <li><a href="Home.html" style="text-decoration:none; color:#ccc;">Home</a></li>
+            <li><a href="Brand.html" style="text-decoration:none; color:#ccc;">Brands</a></li>
+            <li><a href="Compare.html" style="text-decoration:none; color:#ccc;">Compare</a></li>
+            <li><a href="Contact.html" style="text-decoration:none; color:#ccc;">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <h5 style="color:#d4af37; margin-bottom:15px;">Contact Us</h5>
+          <p><i class="bi bi-geo-alt-fill" style="color:#d4af37;"></i> Karachi, Pakistan</p>
+          <p><i class="bi bi-envelope-fill" style="color:#d4af37;"></i> info@oxfordsofas.com</p>
+          <p><i class="bi bi-telephone-fill" style="color:#d4af37;"></i> +92 321 4567890</p>
+
+          <div style="margin-top:20px;">
             <a href="https://www.facebook.com/" class="social-icon"><i class="bi bi-facebook"></i></a>
-          <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.youtube.com/" class="social-icon"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <hr style="border-color:#333; margin:30px 0;">
+      <hr style="border-color:#333; margin:30px 0;">
 
-    <div class="text-center" style="font-size:14px;">
-      © 2025 <span style="color:#d4af37;">Oxford Sofas</span> All Rights Reserved by Oxford Sofas<br>
+      <div class="text-center" style="font-size:14px;">
+        © 2025 <span style="color:#d4af37;">Oxford Sofas</span> All Rights Reserved
+      </div>
     </div>
-  </div>
-</footer>
-    
+  </footer>
+
+  <script>
+    const allSofas = [
+  // ===== Poltrona Frau =====
+  { name: "Chester Sofa" },
+  { name: "Let It Be Sofa" },
+  { name: "Get Back Sofa" },
+  { name: "Parka Sofa" },
+  { name: "Chester One Sofa" },
+  { name: "Times Lounge" },
+  { name: "Grantorino Sofa" },
+  { name: "Archibald Armchair" },
+  { name: "John-John Sofa" },
+  { name: "Claydon Sofa" },
+  { name: "Cestlavie Sofa" },
+  { name: "Martha Armchair" },
+  { name: "Fidelio Sofa" },
+  { name: "Happy Jack Sofa" },
+  { name: "Soufflé Sofa" },
+  { name: "Massimo System Sofa" },
+  { name: "Montera Sofa" },
+  { name: "Leplì Bench" },
+  { name: "Dezza Sofa" },
+
+  // ===== Ligne Roset =====
+  { name: "Togo Sofa" },
+  { name: "Ploum Sofa" },
+  { name: "Manarola Sofa" },
+  { name: "Ruché Sofa" },
+  { name: "Icarus Sofa" },
+  { name: "Aurora Sofa" },
+  { name: "Solace Sofa" },
+  { name: "Helios Recliner" },
+  { name: "Celeste Sofa" },
+  { name: "Orion Sofa" },
+  { name: "Lyra Sofa" },
+  { name: "Apollo Sofa" },
+  { name: "Nova Recliner" },
+  { name: "Orpheus Sofa" },
+  { name: "Venus Sofa" },
+  { name: "Titan Recliner" },
+  { name: "Apollo Plus Sofa" },
+  { name: "Hercules Sofa" },
+  { name: "Phoenix Recliner" },
+  { name: "Lyra Plus Sofa" },
+
+  // ===== Flexform =====
+  { name: "Groundpiece Sofa" },
+  { name: "Feeling Sofa" },
+  { name: "Charles Sofa" },
+  { name: "Brandon Sofa" },
+
+  // ===== Natuzzi Italia =====
+  { name: "Revive Recliner Sofa" },
+  { name: "Diesis Sofa" },
+  { name: "Melpot Modular Sofa" },
+  { name: "Philo Sofa" },
+  { name: "Natuzzi Re-Vive Recliner" },
+  { name: "Natuzzi Herman Sofa" },
+  { name: "Natuzzi Dorian Sofa" },
+  { name: "Natuzzi Melpot" },
+  { name: "Natuzzi Philo Sofa" },
+  { name: "Natuzzi Plaza Sofa" },
+  { name: "Natuzzi Brio Recliner" },
+  { name: "Natuzzi Diesis" },
+  { name: "Natuzzi Colosseo" },
+  { name: "Natuzzi Ido" },
+  { name: "Natuzzi Cava Sofa" },
+  { name: "Natuzzi Amadeus" },
+  { name: "Natuzzi Icon Sofa" },
+  { name: "Natuzzi Felix Sofa" },
+  { name: "Natuzzi Adagio" },
+  { name: "Natuzzi Lumiere Sofa" }
+];
+function getRandomFutureDate() {
+  const today = new Date();
+  const daysToAdd = Math.floor(Math.random() * 30) + 1; // 1 to 30 days
+  today.setDate(today.getDate() + daysToAdd);
+  return today.toDateString(); // e.g., "Thu Nov 14 2025"
+}
+
+// Grab the form by id
+const form = document.getElementById("sofaForm");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const sofaInput = document.getElementById("sofa").value.trim();
+  const availableNames = allSofas.map(sofa => sofa.name);
+
+  if (availableNames.includes(sofaInput)) {
+    const randomDate = getRandomFutureDate();
+    alert(`Your sofa has been booked successfully for ${randomDate}!`);
+    form.reset(); // Reset form only on successful booking
+  } else {
+    alert("This sofa is not available");
+  }
+});
+  </script>
+
 </body>
 </html>

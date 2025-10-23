@@ -41,14 +41,93 @@
       text-shadow: 0 0 10px #d4af37;
     }
 
+    section {
+      padding: 100px 40px 80px;
+      margin-top: 60px;
+    }
+
     .brand-title {
       text-align: center;
       font-size: 2rem;
-      border-bottom: 3px solid #f5f5f5;
+      border-bottom: 3px solid #f5f5f5 ;
       display: inline-block;
       margin-bottom: 40px;
     }
- 
+
+ /* ========== CARD GRID ========== */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .btn {
+      background-color: #d4af37;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #222;
+      color: #d4af37;
+    }
+
+    .more-btn {
+      display: block;
+      width: fit-content;
+      margin: 50px auto 0;
+      background: linear-gradient(45deg, #d4af37, #b8962e);
+      color: white;
+      font-weight: 600;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .more-btn:hover {
+      background: #222;
+      color: #d4af37;
+    }
+
+    /* ========== RESPONSIVE GRID ========== */
+    @media (max-width: 992px) {
+      .card-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .card-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
     footer {
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #222);
       border-top: 3px solid #d4af37;
@@ -58,6 +137,7 @@
       padding: 60px 20px 25px;
     }
   </style>
+  
 </head>
 <body>
   <!-- NAVBAR -->
@@ -77,8 +157,22 @@
       </div>
     </div>
   </nav>
+  <hr>
 
-  <footer style="background:#0e0e0e; color:#ccc; padding:60px 20px 25px; margin-top:100px;">
+  <!-- MAIN SECTION -->
+  <section>
+    <div class="text-center">
+      <h2 class="brand-title" style="color: #b8962e;">Poltrona Frau Collection</h2>
+    </div>
+
+    <div class="card-container" id="sofaCards">
+      <!-- Cards from JSON will load here -->
+    </div>
+  </section>
+
+
+        <!-- ========== FOOTER ========== -->
+<footer style="background:#0e0e0e; color:#ccc; padding:60px 20px 25px; margin-top:100px;">
   <div class="container">
     <div class="row text-center text-md-start align-items-start">
 
@@ -124,6 +218,107 @@
     </div>
   </div>
 </footer>
-    
+
+<script>
+
+   const jsonData = [
+  {"name": "Chester One Sofa", 
+  "price": "Rs. 420,000", 
+  "material": "Hand-Tufted Leather | Beech Wood Frame", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/h/e/chester-one-sofa/02_thumbnails/01_chester-one-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Let It Be Sofa", 
+  "price": "Rs. 385,000", 
+  "material": "Italian Leather | Steel Legs", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/01_hero/let-it-be-sofa-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Times Lounge", 
+  "price": "Rs. 360,000", 
+  "material": "Premium Fabric | Metal Base", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/t/i/m/times-lounge-ottoman/02_thumbnails/001_times-lounge-ottoman.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Grantorino Sofa", 
+  "price": "Rs. 440,000", 
+  "material": "Soft Pelle Frau® Leather | Wood Frame", 
+  "img": "https://www.gerosadesign.com/images/prodotti/divani/poltrona-frau/grantorino-poltrona-frau/grantorino-poltrona-frau1.jpg"},
+
+  {"name": "Archibald Armchair", 
+  "price": "Rs. 310,000", 
+  "material": "Full-Grain Leather | Metal Base", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/a/r/c/archibald-armchair/02_thumbnails/09_archibald-armchair.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "John-John Sofa", 
+  "price": "Rs. 395,000", 
+  "material": "Italian Leather | Steel Structure", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/j/o/h/john-john-sofa/02_thumbnails/03_john-john-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Claydon Sofa", 
+  "price": "Rs. 350,000", 
+  "material": "Natural Fabric | Wooden Legs", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/l/a/clayton-sofa/02_thumbnails/01_clayton-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Cestlavie Sofa", 
+  "price": "Rs. 430,000", 
+  "material": "Luxury Leather | Handmade Stitching", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/e/s/cestlavie-small-table-with-storage/01_hero/cestlavie-small-table-with-storage-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Martha Armchair", 
+  "price": "Rs. 295,000", 
+  "material": "Soft Fabric | Walnut Base", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/m/a/r/martha-armchair/02_thumbnails/06_martha-armchair.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Fidelio Sofa", 
+  "price": "Rs. 410,000", 
+  "material": "Top-Grain Leather | Steel Frame", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/f/i/d/fidelio-multimedia-cabinet/03_concept/01_fidelio-multimedia-cabinet.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Happy Jack Sofa", 
+  "price": "Rs. 370,000", 
+  "material": "Fabric & Leather Mix | Wood Legs", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/h/a/p/happy-jack-sofa/01_hero/happy-jack-sofa-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Soufflé Sofa", 
+  "price": "Rs. 450,000", 
+  "material": "Plush Leather | Metal Legs", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/02_thumbnails/05_let-it-be-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {"name": "Massimo System Sofa", 
+  "price": "Rs. 400,000", 
+  "material": "Modular Fabric | Aluminum Base", 
+  "img": "https://images.openai.com/thumbnails/url/xL1_bHicu5mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5OSsnyCzXyKQsKd82uysoJN01LKnLxd07zzSryrywv0PWJMHCLCC3yjwouVysGAK1NJPc"},
+
+  {"name": "Montera Sofa", 
+  "price": "Rs. 385,000", 
+  "material": "Saddle Leather | Ash Wood Legs", 
+  "img": "https://www.gerosadesign.com/images/prodotti/sedie/poltrona-frau/montera-poltrona-frau/montera-poltrona-frau2.jpg"},
+
+  {"name": "Leplì Bench", 
+  "price": "Rs. 275,000", 
+  "material": "Velvet Upholstery | Brass Base", 
+  "img": "https://img.edilportale.com/product-thumbs/b_lepli-leather-bench-poltrona-frau-244042-rel20ac6088.jpg"},
+
+  {"name": "Dezza Sofa", 
+  "price": "Rs. 335,000", 
+  "material": "Classic Leather | Tapered Wood Legs", 
+  "img": "https://images.openai.com/thumbnails/url/P6IOOHicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw7RLbYwzYhPizdPCSv3T4tPrUrx8DFKqqjKz_VxK6uKys0qtwhJjrAwrAx2VCu2NTQAAB22Jas"}
+];
+
+    const container = document.getElementById("sofaCards");
+
+    jsonData.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <div class="card-content">
+          <h5>${item.name}</h5>
+          <p><strong>Material:</strong> ${item.material}</p>
+          <p class="price">${item.price}</p>
+          <a href="Booking.html" class="btn">Buy Now</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  </script>
 </body>
 </html>
