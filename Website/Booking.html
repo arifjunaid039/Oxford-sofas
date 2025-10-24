@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" href="Images/LOGO.jpg">
 
   <style>
     body {
@@ -24,6 +25,7 @@
       top: 0;
       background-color: #222;
       z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .navbar-brand {
@@ -31,7 +33,7 @@
       font-size: 1.5rem;
       font-weight: bold;
     }
-
+    
     .nav-link {
       color: white !important;
     }
@@ -39,14 +41,6 @@
     .nav-link:hover {
       color: #d4af37 !important;
       text-shadow: 0 0 10px #d4af37;
-    }
-
-    .brand-title {
-      text-align: center;
-      font-size: 2rem;
-      border-bottom: 3px solid #f5f5f5;
-      display: inline-block;
-      margin-bottom: 40px;
     }
 
     .contact-container {
@@ -57,7 +51,7 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
     }
-
+    
     .contact-container h2 {
       color: gold;
       margin-bottom: 20px;
@@ -71,10 +65,7 @@
       font-weight: bold;
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
@@ -85,14 +76,9 @@
       transition: border-color 0.3s ease;
     }
 
-    input:focus, textarea:focus {
+    input:focus, textarea:focus, select:focus {
       border-color: gold;
       outline: none;
-    }
-
-    textarea {
-      resize: vertical;
-      height: 120px;
     }
 
     button {
@@ -112,6 +98,18 @@
       background-color: #e6c200;
     }
 
+    .toast-body {
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+
     footer {
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #222);
       border-top: 3px solid #d4af37;
@@ -120,7 +118,20 @@
       margin-top: 80px;
       padding: 60px 20px 25px;
     }
+
+    .social-icon {
+  color: #ccc;
+  margin: 0 8px;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+.social-icon:hover {
+  color: #d4af37;
+}
+
+
   </style>
+  
 </head>
 <body>
   <!-- NAVBAR -->
@@ -143,26 +154,50 @@
 
   <!-- CONTACT FORM -->
   <section class="contact-container">
-    <h2>Oxford Sofa</h2>
+    <h2>Oxford Sofa Booking</h2>
     <form onsubmit="return false;" id="sofaForm">
       <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      <input type="text" id="name" placeholder="Enter your name" required>
 
       <label for="email">Your Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <input type="email" id="email" placeholder="Enter your email" required>
 
-      <label for="sofa">Your Sofa Name</label>
-      <input type="text" id="sofa" name="sofa" placeholder="Enter your sofa name" required>
+      <label for="brand">Select Brand</label>
+      <select id="brand" required>
+        <option value="">Select Brand</option>
+        <option value="Poltrona Frau">Poltrona Frau</option>
+        <option value="Ligne Roset">Ligne Roset</option>
+        <option value="Flexform">Flexform</option>
+        <option value="Natuzzi Italia">Natuzzi Italia</option>
+      </select>
+
+      <label for="sofa">Select Sofa</label>
+      <select id="sofa" required>
+        <option value="">Select a Brand First</option>
+      </select>
 
       <label for="number">Your Number</label>
-      <input type="tel" id="number" name="number" placeholder="03XXXXXXXXX" maxlength="11" pattern="[0-9]{11}" required>
+      <input type="tel" id="number" placeholder="03XXXXXXXXX" maxlength="11" pattern="[0-9]{11}" required>
 
       <label for="message">Your Message</label>
-      <textarea id="message" name="message" placeholder="Write something..."></textarea>
+      <textarea id="message" placeholder="Write something..." rows="5"></textarea>
 
       <button type="submit">Book Sofa</button>
     </form>
   </section>
+
+
+  <!-- Toast Container -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">
+  <div id="messageToast" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" style="background-color: #1a1a1a; color: gold; border: 1px solid gold;">
+    <div class="d-flex">
+      <div class="toast-body">
+        Your message has been sent!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
 
   <!-- FOOTER -->
   <footer>
@@ -202,7 +237,7 @@
       <hr style="border-color:#333; margin:30px 0;">
 
       <div class="text-center" style="font-size:14px;">
-        © 2025 <span style="color:#d4af37;">Oxford Sofas</span> All Rights Reserved
+        © 2025 <span style="color:#d4af37;">Oxford Sofas</span> All Rights Reserved by Oxford Sofas
       </div>
     </div>
   </footer>
@@ -253,10 +288,22 @@
   { name: "Lyra Plus Sofa" },
 
   // ===== Flexform =====
-  { name: "Groundpiece Sofa" },
-  { name: "Feeling Sofa" },
-  { name: "Charles Sofa" },
-  { name: "Brandon Sofa" },
+{"name": "Groundpiece Sofa"} ,
+{ "name": "Feel Good Sofa" },
+{ "name": "Soft Dream Sofa" },
+{ "name": "Cestone Sofa" },
+{ "name": "Lario Sofa" },
+{ "name": "Gregory Sofa" },
+{ "name": "Campiello Sofa" },
+{ "name": "Asolo Sofa" },
+{ "name": "Flexform LoungeScape Sofa" },
+{ "name": "Flexform Perry Up Sofa" },
+{ "name": "Flexform Supermax Sofa" },
+{ "name": "Flexform Max Sofa" },
+{ "name": "Flexform Guscio Sofa" },
+{ "name": "Flexform Edmond Sofa" },
+{ "name": "Flexform Adda Sofa" },
+{ "name": "Flexform Evergreen Sofa" },
 
   // ===== Natuzzi Italia =====
   { name: "Revive Recliner Sofa" },
@@ -280,29 +327,62 @@
   { name: "Natuzzi Adagio" },
   { name: "Natuzzi Lumiere Sofa" }
 ];
-function getRandomFutureDate() {
-  const today = new Date();
-  const daysToAdd = Math.floor(Math.random() * 30) + 1; // 1 to 30 days
-  today.setDate(today.getDate() + daysToAdd);
-  return today.toDateString(); // e.g., "Thu Nov 14 2025"
-}
 
-// Grab the form by id
-const form = document.getElementById("sofaForm");
+const brandSofas = {
+      "Poltrona Frau": ["Chester Sofa","Let It Be Sofa","Get Back Sofa","Parka Sofa","Chester One Sofa","Times Lounge","Grantorino Sofa","Archibald Armchair","John-John Sofa","Claydon Sofa","Cestlavie Sofa","Martha Armchair","Fidelio Sofa","Happy Jack Sofa","Soufflé Sofa","Massimo System Sofa","Montera Sofa","Leplì Bench","Dezza Sofa",],
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-  const sofaInput = document.getElementById("sofa").value.trim();
-  const availableNames = allSofas.map(sofa => sofa.name);
+      "Ligne Roset": ["Togo Sofa","Ploum Sofa","Manarola Sofa","Ruché Sofa","Icarus Sofa","Aurora Sofa","Solace Sofa","Helios Recliner","Celeste Sofa","Orion Sofa","Lyra Sofa","Apollo Sofa","Nova Recliner","Orpheus Sofa","Venus Sofa","Titan Recliner","Apollo Plus Sofa","Hercules Sofa","Phoenix Recliner","Lyra Plus Sofa",],
 
-  if (availableNames.includes(sofaInput)) {
-    const randomDate = getRandomFutureDate();
-    alert(`Your sofa has been booked successfully for ${randomDate}!`);
-    form.reset(); // Reset form only on successful booking
-  } else {
-    alert("This sofa is not available");
-  }
-});
+      "Flexform": ["Groundpiece Sofa","Feel Good Sofa","Soft Dream Sofa","Cestone Sofa","Lario Sofa","Gregory Sofa","Campiello Sofa","Asolo Sofa","Flexform LoungeScape Sofa","Flexform Perry Up Sofa","Flexform Supermax Sofa","Flexform Max Sofa","Flexform Guscio Sofa","Flexform Edmond Sofa","Flexform Adda Sofa","Flexform Evergreen Sofa",],
+
+      "Natuzzi Italia": ["Revive Recliner Sofa","Diesis Sofa","Melpot Modular Sofa","Philo Sofa","Natuzzi Re-Vive Recliner","Natuzzi Herman Sofa","Natuzzi Dorian Sofa","Natuzzi Melpot","Natuzzi Philo Sofa","Natuzzi Plaza Sofa","Natuzzi Brio Recliner","Natuzzi Diesis","Natuzzi Colosseo","Natuzzi Ido","Natuzzi Cava Sofa","Natuzzi Amadeus","Natuzzi Icon Sofa","Natuzzi Felix Sofa","Natuzzi Adagio","Natuzzi Lumiere Sofa",]
+
+    };
+
+    const brandSelect = document.getElementById("brand");
+    const sofaSelect = document.getElementById("sofa");
+    const form = document.getElementById("sofaForm");
+    const messageToast = new bootstrap.Toast(document.getElementById("messageToast"));
+
+    // When brand changes
+    brandSelect.addEventListener("change", () => {
+      const brand = brandSelect.value;
+      sofaSelect.innerHTML = '<option value="">Select Sofa</option>';
+      if (brand && brandSofas[brand]) {
+        brandSofas[brand].forEach(sofa => {
+          const option = document.createElement("option");
+          option.value = sofa;
+          option.textContent = sofa;
+          sofaSelect.appendChild(option);
+        });
+      }
+    });
+
+    // Random future date
+    function getRandomFutureDate() {
+      const today = new Date();
+      today.setDate(today.getDate() + Math.floor(Math.random() * 30) + 1);
+      return today.toDateString();
+    }
+
+    // Form submission
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const brand = brandSelect.value;
+      const sofa = sofaSelect.value;
+      if (brand && sofa) {
+        const randomDate = getRandomFutureDate();
+        document.querySelector("#messageToast .toast-body").textContent =
+          `${sofa} from ${brand} has been booked successfully for ${randomDate}!`;
+        messageToast.show();
+        form.reset();
+        sofaSelect.innerHTML = '<option value="">-- Select a Brand First --</option>';
+      } else {
+        document.querySelector("#messageToast .toast-body").textContent = "Please select a brand and sofa.";
+        messageToast.show();
+      }
+    });
+
   </script>
 
 </body>
