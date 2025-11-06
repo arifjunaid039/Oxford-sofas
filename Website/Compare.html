@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oxford Sofas</title>
-
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="icon" href="Images/LOGO.jpg">
+  <link rel="icon" href="Images/LOGO.jpg">
 
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #111, #1a1a1a);
-      color: #f5f5f5;
+      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+      color: #f8f9fa;
       margin: 0;
+      overflow-x: hidden;
     }
 
-    nav {
+      nav {
       position: fixed;
       width: 100%;
       top: 0;
       background-color: #222;
       z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .navbar-brand {
@@ -32,7 +32,7 @@
       font-size: 1.5rem;
       font-weight: bold;
     }
-
+    
     .nav-link {
       color: white !important;
     }
@@ -42,14 +42,179 @@
       text-shadow: 0 0 10px #d4af37;
     }
 
+    section {
+      padding: 90px 25px 40px;
+      animation: fadeIn 0.7s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .brand-title {
       text-align: center;
-      font-size: 2rem;
-      border-bottom: 3px solid #f5f5f5;
+      font-size: 1.3rem;
+      border-bottom: 2px solid #ffd86b;
       display: inline-block;
-      margin-bottom: 40px;
+      margin: 40px auto 25px;
+      padding-bottom: 3px;
+      color: #fff;
     }
- 
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(43,43,43,0.9);
+      box-shadow: 0 4px 15px rgba(255, 215, 100, 0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .card-content {
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    .card-content h4 {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-content p {
+      color: #d8d8d8;
+      font-size: 0.8rem;
+      margin: 2px 0;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 25px rgba(255, 216, 107, 0.2);
+    }
+
+    .card.selected {
+      border: 1.5px solid #ffd86b;
+      box-shadow: 0 0 20px rgba(255, 216, 107, 0.4);
+      animation: pulseGlow 1.2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(255,216,107,0.3); }
+      50% { box-shadow: 0 0 25px rgba(255,216,107,0.55); }
+    }
+
+    .card.selected::after {
+      content: "✓";
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      background: #ffd86b;
+      color: #000;
+      font-weight: 700;
+      font-size: 0.7rem;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    .compare-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      color: #fff;
+    }
+
+    .compare-box {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 18px;
+      width: 92%;
+      max-width: 750px;
+      box-shadow: 0 0 30px rgba(255, 215, 100, 0.25);
+      animation: modalFade 0.3s ease;
+    }
+
+    @keyframes modalFade {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .compare-header {
+      text-align: center;
+      margin-bottom: 15px;
+      border-bottom: 1.5px solid #ffd86b;
+      padding-bottom: 5px;
+      font-size: 1.2rem;
+      color: #ffd86b;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      align-items: start;
+    }
+
+    .compare-item {
+      text-align: center;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      padding: 10px;
+      transition: 0.3s;
+    }
+
+    .compare-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      background: #111;
+    }
+
+    .compare-item h4 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .compare-item p {
+      font-size: 0.8rem;
+      color: #cfcfcf;
+      margin: 2px 0;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      color: #ffd86b;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .close-btn:hover { color: #fff; }
+
     footer {
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #222);
       border-top: 3px solid #d4af37;
@@ -71,26 +236,36 @@
 
   </style>
 </head>
+
 <body>
-  <!-- NAVBAR -->
+
+  <!-- ========== NAVBAR ========== -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Oxford Sofas</a>
+      <img src="Images/LOGO.jpg" alt="LOGO" width="80" height="80" style="border-radius: 50%; margin-right: 15px;">
+      <a class="navbar-brand" href="Home.html">Oxford Sofas</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="menu">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav align-items-center">
           <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="Brand.html">Brands</a></li>
           <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
         </ul>
+        <button id="logoutBtn">Logout</button>
       </div>
     </div>
   </nav>
 
-  <footer style="background:#0e0e0e; color:#ccc; padding:60px 20px 25px; margin-top:100px;">
+  <section>
+    <h6 class="text-center mb-4 text-light">Select any <span class="text-warning">two sofas</span> to compare their beauty & craftsmanship.</h6>
+    <div id="compare-container"></div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+<footer style="background:#0e0e0e; color:#ccc; padding:60px 20px 25px; margin-top:100px;">
   <div class="container">
     <div class="row text-center text-md-start align-items-start">
 
@@ -122,7 +297,7 @@
 
         <!-- Social Icons -->
         <div style="margin-top:20px;">
-         <a href="https://www.facebook.com/" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.facebook.com/" class="social-icon"><i class="bi bi-facebook"></i></a>
           <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
           <a href="https://www.youtube.com/" class="social-icon"><i class="bi bi-youtube"></i></a>
         </div>
@@ -136,6 +311,590 @@
     </div>
   </div>
 </footer>
-    
+
+  <div class="compare-modal" id="compareModal">
+    <span class="close-btn" id="closeCompare">&times;</span>
+    <div class="compare-box">
+      <h3 class="compare-header">Sofa Comparison</h3>
+      <div class="compare-grid" id="compareGrid"></div>
+    </div>
+  </div>
+
+  <script>
+    const allSofas = [
+      { brand: "Poltrona Frau", 
+      name: "Chester Sofa", 
+      img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/h/e/chester-sofa/02_thumbnails/01_chester-sofa.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg", 
+      price: "Rs. 650,000", 
+      material: "Italian Leather" },
+
+      { brand: "Poltrona Frau", 
+      name: "Let It Be Sofa", 
+      img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/02_thumbnails/05_let-it-be-sofa.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg", 
+      price: "Rs. 720,000", 
+      material: "Top Grain Leather" },
+
+      { brand: "Poltrona Frau", 
+      name: "Get Back Sofa", 
+      img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/g/e/t/get-back-sofa/02_thumbnails/29_get-back-sofa.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg", 
+      price: "Rs. 890,000", 
+      material: "Soft Leather Fabric" },
+
+      { brand: "Poltrona Frau", 
+      name: "Parka Sofa", 
+      img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/p/a/r/parka-sofa/01_hero/parka-sofa-v1@mobile.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg", price: "Rs. 950,000", 
+      material: "Natural Leather" },
+
+  {brand: "Poltrona Frau",
+  "name": "Chester One Sofa", 
+  "price": "Rs. 420,000", 
+  "material": "Hand-Tufted Leather | Beech Wood Frame", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/h/e/chester-one-sofa/02_thumbnails/01_chester-one-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Let It Be Sofa", 
+  "price": "Rs. 385,000", 
+  "material": "Italian Leather | Steel Legs", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/01_hero/let-it-be-sofa-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Times Lounge", 
+  "price": "Rs. 360,000", 
+  "material": "Premium Fabric | Metal Base", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/t/i/m/times-lounge-ottoman/02_thumbnails/001_times-lounge-ottoman.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Grantorino Sofa", 
+  "price": "Rs. 440,000", 
+  "material": "Soft Pelle Frau® Leather | Wood Frame", 
+  "img": "https://www.gerosadesign.com/images/prodotti/divani/poltrona-frau/grantorino-poltrona-frau/grantorino-poltrona-frau1.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Archibald Armchair", 
+  "price": "Rs. 310,000", 
+  "material": "Full-Grain Leather | Metal Base", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/a/r/c/archibald-armchair/02_thumbnails/09_archibald-armchair.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "John-John Sofa", 
+  "price": "Rs. 395,000", 
+  "material": "Italian Leather | Steel Structure", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/j/o/h/john-john-sofa/02_thumbnails/03_john-john-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Claydon Sofa", 
+  "price": "Rs. 350,000", 
+  "material": "Natural Fabric | Wooden Legs", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/l/a/clayton-sofa/02_thumbnails/01_clayton-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Cestlavie Sofa", 
+  "price": "Rs. 430,000", 
+  "material": "Luxury Leather | Handmade Stitching", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/e/s/cestlavie-small-table-with-storage/01_hero/cestlavie-small-table-with-storage-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Martha Armchair", 
+  "price": "Rs. 295,000", 
+  "material": "Soft Fabric | Walnut Base", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/m/a/r/martha-armchair/02_thumbnails/06_martha-armchair.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Fidelio Sofa", 
+  "price": "Rs. 410,000", 
+  "material": "Top-Grain Leather | Steel Frame", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/f/i/d/fidelio-multimedia-cabinet/03_concept/01_fidelio-multimedia-cabinet.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Happy Jack Sofa", 
+  "price": "Rs. 370,000", 
+  "material": "Fabric & Leather Mix | Wood Legs", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/h/a/p/happy-jack-sofa/01_hero/happy-jack-sofa-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Soufflé Sofa", 
+  "price": "Rs. 450,000", 
+  "material": "Plush Leather | Metal Legs", 
+  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/02_thumbnails/05_let-it-be-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Massimo System Sofa", 
+  "price": "Rs. 400,000", 
+  "material": "Modular Fabric | Aluminum Base", 
+  "img": "https://images.openai.com/thumbnails/url/xL1_bHicu5mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5OSsnyCzXyKQsKd82uysoJN01LKnLxd07zzSryrywv0PWJMHCLCC3yjwouVysGAK1NJPc"},
+
+  {brand: "Poltrona Frau",
+  "name": "Montera Sofa", 
+  "price": "Rs. 385,000", 
+  "material": "Saddle Leather | Ash Wood Legs", 
+  "img": "https://www.gerosadesign.com/images/prodotti/sedie/poltrona-frau/montera-poltrona-frau/montera-poltrona-frau2.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Leplì Bench", 
+  "price": "Rs. 275,000", 
+  "material": "Velvet Upholstery | Brass Base", 
+  "img": "https://img.edilportale.com/product-thumbs/b_lepli-leather-bench-poltrona-frau-244042-rel20ac6088.jpg"},
+
+  {brand: "Poltrona Frau",
+  "name": "Dezza Sofa", 
+  "price": "Rs. 335,000", 
+  "material": "Classic Leather | Tapered Wood Legs", 
+  "img": "https://images.openai.com/thumbnails/url/P6IOOHicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw7RLbYwzYhPizdPCSv3T4tPrUrx8DFKqqjKz_VxK6uKys0qtwhJjrAwrAx2VCu2NTQAAB22Jas"},
+
+      { brand: "Ligne Roset", 
+      name: "Togo Sofa", 
+      img: "https://www.ligne-roset.com/media/ligne_roset_us/1003xz_W.jpg", 
+      price: "Rs. 580,000", 
+      material: "Soft Suede Fabric" },
+      { brand: "Ligne Roset", 
+      name: "Ploum Sofa", 
+      img: "https://www.ligne-roset.com/media/ligne_roset_us/100b5v_c.jpg", 
+      price: "Rs. 670,000", 
+      material: "High-Density Foam" },
+
+      { brand: "Ligne Roset", 
+      name: "Manarola Sofa", 
+      img: "https://www.ligne-roset.com/media/ligne_roset_us/00vrx.jpg", 
+      price: "Rs. 740,000", 
+      material: "Premium Wool Blend" },
+
+      { brand: "Ligne Roset", 
+      name: "Ruché Sofa", 
+      img: "https://www.ligne-roset.com/media/ligne_roset_us/100907.jpg", 
+      price: "Rs. 810,000", 
+      material: "Solid Wood + Fabric" },
+
+  {brand: "Ligne Roset",
+  "name": "Icarus Sofa", 
+  "price": "Rs. 280,000", 
+  "material": "Premium Leather", 
+  "img": "https://www.ligne-roset.com/media/ligne_roset_us/100b5v_c.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Aurora Sofa", 
+  "price": "Rs. 350,000", 
+  "material": "Fabric & Leather Mix", 
+  "img": "https://www.ligne-roset.com/media/upload/Website%20US/Virtual%20showroom/Ligne-Roset-LA-3-25-07-1.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Solace Sofa", 
+  "price": "Rs. 400,000", 
+  "material": "Soft Nubuck Leather", 
+  "img": "https://www.azuremagazine.com/wp-content/uploads/2022/01/Azure-Ligne-Roset-Grand-Angle-Spec-Sheets-Thumbnail.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Helios Recliner", 
+  "price": "Rs. 295,000", 
+  "material": "Top Grain Leather", 
+  "img": "https://images.whoppah.com/image/6258844c-a0dd-4489-82c2-fd82303cf02c/original.jpg?width=1280"},
+
+  {brand: "Ligne Roset",
+  "name": "Celeste Sofa", 
+  "price": "Rs. 360,000", 
+  "material": "Luxury Fabric", 
+  "img": "https://www.ligne-roset.com/media/ligne_roset_us/100907.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Orion Sofa", 
+  "price": "Rs. 380,000", 
+  "material": "Italian Leather", 
+  "img": "https://www.ligne-roset.com/media/ligne_roset_us/10041g.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Lyra Sofa", 
+  "price": "Rs. 420,000", 
+  "material": "Soft Grain Leather", 
+  "img": "https://cdn.no-ga.com/1bcf0850-50df-445d-8ced-4959bc38e547?f=webp&q=80&w=3840"},
+
+  {brand: "Ligne Roset",
+  "name": "Apollo Sofa", 
+  "price": "Rs. 310,000", 
+  "material": "Textured Fabric + Metal Frame", 
+  "img": "https://www.brabbu.com/en/inspiration-and-ideas/wp-content/uploads/2021/04/Living-Room-Decor-Ideas-Discover-Your-Perfect-Sofa-1.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Nova Recliner", 
+  "price": "Rs. 330,000", 
+  "material": "Premium Leather", 
+  "img": "https://i0.wp.com/sydneyfurnituredirect.com.au/wp-content/uploads/2022/04/NOVA-2-5REHREH-4.jpg?fit=1280%2C1132&ssl=1"},
+
+  {brand: "Ligne Roset",
+  "name": "Orpheus Sofa", 
+  "price": "Rs. 390,000", 
+  "material": "Luxury Fabric", 
+  "img": "https://cdn11.bigcommerce.com/s-1sfz4h1x1c/images/stencil/1280x1280/products/3261/9142/Screen_Shot_2024-12-29_at_2.14.33_PM__40085.1735507145.png?c=1"},
+
+  {brand: "Ligne Roset",
+  "name": "Venus Sofa", 
+  "price": "Rs. 415,000", 
+  "material": "Soft Nubuck Leather", 
+  "img": "https://cdn20.pamono.com/p/s/1/0/1091654_015357vvzh/khaki-velvet-living-room-set-by-michel-ducaroy-for-ligne-roset-1970s-set-of-5.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Titan Recliner", 
+  "price": "Rs. 365,000", 
+  "material": "Italian Leather", 
+  "img": "https://ik.imagekit.io/kuj9zqlrx0or/no_bg_691e5b6d-2cf5-4a49-a98f-8a68a007ab5d.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Apollo Plus Sofa", 
+  "price": "Rs. 340,000", 
+  "material": "Fabric & Leather Mix", 
+  "img": "https://www.ligne-roset.com/media/ligne_roset_us/1008zi.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Hercules Sofa", 
+  "price": "Rs. 450,000", 
+  "material": "Premium Leather", 
+  "img": "https://i.ebayimg.com/images/g/eBMAAOSwQYBmm-TQ/s-l400.jpg"},
+
+  {brand: "Ligne Roset",
+  "name": "Phoenix Recliner", 
+  "price": "Rs. 320,000", 
+  "material": "Soft Grain Leather", 
+  "img": "https://furniturefair.net/cdn/shop/files/C3CA27D4-7AAC-4059-BC76-722278C227D3_398212ff-21b4-4229-a949-2426b2db8f20_1200x.jpg?v=1756589221"},
+
+  {brand: "Ligne Roset",
+  "name": "Lyra Plus Sofa", 
+  "price": "Rs. 375,000", 
+  "material": "Luxury Fabric", 
+  "img": "https://publish.purewow.net/wp-content/uploads/sites/2/2023/09/Ligne-Roset-universal.jpg?fit=2050%2C1110"},
+
+      { brand: "Flexform", 
+      name: "Groundpiece Sofa", 
+      img: "https://www.tomassini.com/106722-page_product_image/bb-italia-charles-sofa.jpgtps://ww.flexform.it/sites/default/files/styles/max_1300x1300/public/products/groundpiece_1.jpghwttps:/ht/www.flexform.it/sites/default/files/styles/fullhd/public/2023-03/groundpiece_03_gallery.jpg", 
+      price: "Rs. 1,050,000", 
+      material: "Premium Leather & Fabric" },
+
+      { brand: "Flexform", 
+      name: "Feeling Sofa", 
+      img: "https://feelingestofados.com.br/wp-content/uploads/elementor/thumbs/Sem-nome-896-x-1120-px-720-x-720-px-qvjs06zyn2hss8khbrszkp9xmvw2j4m2hwhoq4tlvk.png", price: "Rs. 1,200,000", 
+      material: "Soft Fabric & Cushions" },
+
+      { brand: "Flexform", 
+      name: "Charles Sofa", 
+      img: "https://cdn.mohd.it/cache/image/width%3D800%2Cformat%3Dwebp/media/catalog/product/c/h/charles-b-b-italia-10.jpg", 
+      price: "Rs. 1,350,000", 
+      material: "Italian Leather & Modular Design" },
+
+      { brand: "Flexform", 
+      name: "Brandon Sofa", 
+      img: "https://sits.eu/static/798e1b4a98a7ac893b010a5071ab2f0b/d1935/BRANDON_interior_set3_stipa_4_nature_1-2.webp", 
+      price: "Rs. 1,500,000", 
+      material: "Premium Fabric & Solid Frame" },
+
+      { brand: "Flexform", 
+      "name": "Groundpiece Sofa", 
+      "price": "Rs. 490,000",
+      "material": "Fabric + Leather Modular Design", 
+      "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2F56c5d8a4f39914a7615dedb0683db4df55fa11b9.x1680.webp%2F011M11_GROUNDPIECE_SECTIONAL_SET_15_Q.jpg&w=3840"},
+
+      { brand: "Flexform", 
+      "name": "Feel Good Sofa", 
+      "price": "Rs. 450,000", 
+      "material": "Leather Upholstery with Metal Legs", 
+      "img": "https://snoopy.archdaily.com/images/archdaily/catalog/uploads/photo/image/240573/full_feelgood-2-b.jpg?format=webp&width=840"},
+
+      { brand: "Flexform", 
+      "name": "Soft Dream Sofa", 
+      "price": "Rs. 470,000", 
+      "material": "Feather Cushion | Metal Frame", 
+      "img": "https://images.openai.com/thumbnails/url/gWnBOXicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4Oj0gpS_Pw9LassvQIsIgPDPI28E0ydbcIDK3KyQursHT2NqsoLy8uynVOVyu2NTQAAALmJQM"},
+
+      { brand: "Flexform", 
+      "name": "Cestone Sofa", 
+      "price": "Rs. 510,000", 
+      "material": "Leather Woven Back | Fabric Cushions", 
+      "img": "https://images.openai.com/thumbnails/url/zR2Z-3icu5mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4MCo6KMDK2dAsKD3EtKgvSDQ7yKC920k1yLw1wLTBxd0otczHNMfX1DA9NVysGAIRuI3o"},
+
+      { brand: "Flexform", 
+      "name": "Lario Sofa", 
+      "price": "Rs. 460,000", 
+      "material": "Modular Fabric Sofa", 
+      "img": "https://img.edilportale.com/news/j_43972_03.jpg"},
+
+      { brand: "Flexform", 
+      "name": "Gregory Sofa", 
+      "price": "Rs. 530,000", 
+      "": "Rs. 520,000", 
+      "material": "Soft Back Cushions | Fabric Upholstery", 
+      "img": "https://images.openai.com/static-rsc-1/LrdGIylso08togp9QXIiyzo_xzkBljVNQrVrlTFNL-ZDiE0mqBVDoXpkZrGwMalHxhDTbHGnt7WnxxeQZc8e_jXD91BYwPfRIGx4aj0NumRXDZE-fzBCShSw5M3Ctzj8Dejh4iUF9wPf5bGiZXzSZA"},
+
+      { brand: "Flexform", 
+      "name": "Asolo Sofa", 
+      "price": "Rs. 480,000", 
+      "materimaterial": "Leather | Fabric Blend | Metal Base", 
+      "img": "https://www.undomus.com/89245-large_default/gregory-xl-modular-sofa-flexform.jpghttps://cdn.flexform.it/flexformweb/gregory-gallery-04.jpg"},
+
+      { brand: "Flexform", 
+      "name": "Campiello Sofa",
+      "priceal": "Leather Upholstery | Down Cushions", 
+      "img": "https://images.openai.com/thumbnails/url/tizE3Hicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4qMkz28fXyq4gICKvyKTfwSDPKCCwPdAz2csnzCPcoCjUysnTyyPNOqoxwVCu2NTQAAAQtJIE"},
+
+      { brand: "Flexform", 
+    "name": "Flexform LoungeScape Sofa",
+    "price": "Rs. 520,000",
+    "material": "Premium Fabric | Modular Design | Aluminum Base",
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2Fa2c2e906b358369ff5c35caf7c662a5d55e4b228.1680x1680.webp%2F02D307_LOUNGESCAPE_SECTIONAL_07.png&w=3840"
+  },
+
+  { brand: "Flexform", 
+    "name": "Flexform Perry Up Sofa",
+    "price": "Rs. 480,000",
+    "material": "Soft Nubuck Leather | Feather Cushions | Metal Legs",
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2Fc6e853267b3ab594b4a5d87c618539161e841d69.1680x1680.webp%2F02A903_PERRY%2520UP_STANDALONE_01.png&w=3840"
+  },
+
+  { brand: "Flexform", 
+    "name": "Flexform Supermax Sofa",
+    "price": "Rs. 510,000",
+    "material": "Italian Leather | High-Back Design | Steel Frame",
+    "img": "https://boulevard.co/wp-content/uploads/2023/10/flexform-2-19.png"
+  },
+
+  { brand: "Flexform", 
+    "name": "Flexform Max Sofa",
+    "price": "Rs. 460,000",
+    "material": "Top-Grain Leather | Minimalist Curved Shape",
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2F1f822952914e632fb39b813634f67ec605baca72.1680x1680.webp%2F011903_MAX_STANDALONE_03.png&w=3840"
+  },
+
+  { brand: "Flexform", 
+    "name": "Flexform Guscio Sofa",
+    "price": "Rs. 495,000",
+    "material": "Fabric Upholstery | Wood Base | Down-Filled Cushions",
+    "img": "https://images.openai.com/thumbnails/url/tpYyRXicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw6MMAwsKfcsDQs3NAmv8AvNyy0tCYx0Dg4zLMw0LzUxLDZzy9F1CS6pMApzVCu2NTQAAA4iJMQ"
+  },
+
+  { brand: "Flexform", 
+    "name": "Flexform Edmond Sofa",
+    "price": "Rs. 530,000",
+    "material": "Italian Leather | Tufted Design | Metal Frame",
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2F35a9df71a6ca72dc680f07a621d12a3efccc98df.1680x1680.webp%2F015Z02_EDMOND_STANDALONE_01.png&w=3840"
+  },
+
+  { brand: "Flexform", 
+    "name": "Flexform Adda Sofa",
+    "price": "Rs. 505,000",
+    "material": "Soft Fabric | Metal Legs | Adjustable Cushions",
+    "img": "https://www.flexformcomo.com/images/prodotti/divani-flexform/adda-flexform/adda-flexform3.jpg"
+  },
+
+  { brand: "Flexform", 
+    "name": "Flexform Evergreen Sofa",
+    "price": "Rs. 470,000",
+    "material": "Luxury Leather | Modular Sections | Wooden Base",
+    "img": "https://www.switchmodern.com/images/uploads/flexform-evergreen-sectional-sofa-antonio-citterio-1400x800-1.jpg"
+  },
+
+      { brand: "Natuzzi Italia", 
+      name: "Revive Recliner Sofa", 
+      img: "https://www.furnitalia.com/wp-content/uploads/2024/03/Natuzzi-Re-Vive-Tailored-King-15H2.jpg", 
+      price: "Rs. 930,000", 
+      material: "Soft Italian Leather" },
+
+      { brand: "Natuzzi Italia", 
+      name: "Diesis Sofa", 
+      img: "https://rapportfurniture.com/cdn/shop/products/Diesis-5e5be59c8b7e256.jpg?v=1637349765", 
+      price: "Rs. 1,100,000", 
+      material: "Handcrafted Leather" },
+
+      { brand: "Natuzzi Italia", 
+      name: "Melpot Modular Sofa",
+      img: "https://www.villaarredamenti.net/img/1276/home-decor-living-rooms-melpot_oen_1300254.webp", 
+      price: "Rs. 1,350,000", 
+      material: "Customizable Fabric" },
+
+      { brand: "Natuzzi Italia", 
+      name: "Philo Sofa", 
+      img: "https://static.natuzzi.com/production/0137432_philo.jpeg", 
+      price: "Rs. 1,200,000", 
+      material: "Premium Suede" },
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Re-Vive Recliner",
+      "price": "Rs. 295,000", 
+      "material":"Genuine Italian Leather",
+      "img": "https://static.natuzzi.com/production/0138254_re-vive-quilted-king.jpeg"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Herman Sofa", 
+      "price": "Rs. 345,000", 
+      "material": "Top-Grain Leather",
+      "img": "https://images.unsplash.com/photo-1600585152220-90363fe7e115"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Dorian Sofa", 
+      "price": "Rs. 320,000",
+       "material": "Premium Fabric + Leather Mix",
+       "img": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7"},
+
+      {brand: "Natuzzi Italia",
+       "name": "Natuzzi Melpot",
+       "price": "Rs. 410,000", 
+       "material": "Soft Nubuck Leather",
+       "img": "https://www.furnitalia.com/wp-content/uploads/2025/08/Natuzzi-Italia-Melpot-Sofa-with-shelves-tan.jpg"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Philo Sofa",
+      "price": "Rs. 365,000", 
+      "material": "Italian Leather with Metal Legs", 
+      "img": "https://static.natuzzi.com/production/0137432_philo.jpeg"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Plaza Sofa", 
+      "price": "Rs. 380,000",
+      "material": "Luxury Soft-Touch Leather",
+      "img": "https://images.unsplash.com/photo-1600585152220-90363fe7e115"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Brio Recliner", 
+      "price": "Rs. 290,000", 
+      "material": "Electric Recline | Leather", 
+      "img": "https://www.houseofdenmarkfurniture.com/wp-content/uploads/2016/03/nat-2761brio-room1.jpg"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Diesis", 
+      "price": "Rs. 335,000", 
+      "material": "Italian Fabric | Beech Wood Legs", 
+      "img": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Colosseo", 
+      "price": "Rs. 450,000", 
+      "material": "Italian Top-Grain Leather", 
+      "img": "https://italian-interiors.com/shop/furniture_image/bigimage5176.jpg"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Ido", 
+      "price": "Rs. 310,000", 
+      "material": "Textured Fabric + Metal Frame",
+      "img": "https://rapportfurniture.com/cdn/shop/products/Ido-58b478b856be74.jpg?v=1637349743"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Cava Sofa", 
+      "price": "Rs. 390,000", 
+      "material": "Hand-Treated Leather", 
+      "img": "https://images.unsplash.com/photo-1600585152220-90363fe7e115"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Amadeus", 
+      "price": "Rs. 430,000", 
+      "material": "Curved Design | Leather Upholstery", 
+      "img": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Icon Sofa", 
+      "price": "Rs. 340,000", 
+      "material": "Velvet Fabric with Gold Legs", 
+      "img": "https://rapportfurniture.com/cdn/shop/products/Icon-5bae4ecccdad25.jpg?v=1637349793"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Felix Sofa", 
+      "price": "Rs. 300,000", 
+      "material": "Natural Leather | Solid Frame", 
+      "img": "https://intuitiondecor.com/wp-content/uploads/2024/08/Pixel110-1.jpg"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Adagio", 
+      "price": "Rs. 420,000", 
+      "material": "Soft Grain Leather | Steel Base", 
+      "img": "https://italian-interiors.com/shop/furniture_image/addsimage24586.jpg"},
+
+      {brand: "Natuzzi Italia",
+      "name": "Natuzzi Lumiere Sofa", 
+      "price": "Rs. 370,000", 
+      "material": "Luxury Fabric | Wooden Frame", 
+      "img": "https://images.unsplash.com/photo-1600585152220-90363fe7e115"}
+    ];
+
+    const container = document.getElementById('compare-container');
+    const compareModal = document.getElementById('compareModal');
+    const compareGrid = document.getElementById('compareGrid');
+    const closeCompare = document.getElementById('closeCompare');
+    let selected = [];
+
+    function renderSofas() {
+      const grouped = {};
+      allSofas.forEach(sofa => {
+        if (!grouped[sofa.brand]) grouped[sofa.brand] = [];
+        grouped[sofa.brand].push(sofa);
+      });
+
+      for (const brand in grouped) {
+        const section = document.createElement("div");
+        section.innerHTML = `
+          <h3 class='brand-title'>${brand}</h3>
+          <div class='card-container'></div>
+        `;
+        const cardContainer = section.querySelector('.card-container');
+
+        grouped[brand].forEach(sofa => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <img src="${sofa.img}" alt="${sofa.name}">
+            <div class="card-content">
+              <h4>${sofa.name}</h4>
+              <p>${sofa.material}</p>
+              <p class="text-warning fw-semibold">${sofa.price}</p>
+            </div>
+          `;
+          card.onclick = () => selectSofa(sofa, card);
+          cardContainer.appendChild(card);
+        });
+
+        container.appendChild(section);
+      }
+    }
+
+    function selectSofa(sofa, card) {
+      if (selected.includes(sofa)) {
+        selected = selected.filter(s => s !== sofa);
+        card.classList.remove("selected");
+      } else if (selected.length < 2) {
+        selected.push(sofa);
+        card.classList.add("selected");
+      }
+      if (selected.length === 2) openCompare();
+    }
+
+    function openCompare() {
+      compareGrid.innerHTML = '';
+      selected.forEach(sofa => {
+        const div = document.createElement('div');
+        div.className = 'compare-item';
+        div.innerHTML = `
+          <img src="${sofa.img}">
+          <h4>${sofa.brand} — ${sofa.name}</h4>
+          <p><b>Material:</b> ${sofa.material}</p>
+          <p><b>Price:</b> ${sofa.price}</p>
+        `;
+        compareGrid.appendChild(div);
+      });
+      compareModal.style.display = 'flex';
+    }
+
+    closeCompare.onclick = () => {
+      compareModal.style.display = 'none';
+      selected = [];
+      document.querySelectorAll('.card.selected').forEach(c => c.classList.remove('selected'));
+    };
+
+    renderSofas();
+
+    // Prevent access if not logged in
+  if (!localStorage.getItem("loggedInUser")) {
+    // window.location.href = "Login.html";
+    document.getElementById("logoutBtn").innerText = "Log In"
+  }
+
+  // Logout button logic
+  document.getElementById("logoutBtn").onclick = () => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "Login.html";
+  };
+
+  </script>
 </body>
 </html>
