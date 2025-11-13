@@ -10,6 +10,14 @@
   <link rel="icon" href="Images/LOGO.jpg">
 
   <style>
+    button, a, img
+    {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
@@ -18,7 +26,7 @@
       overflow-x: hidden;
     }
 
-      nav {
+    nav {
       position: fixed;
       width: 100%;
       top: 0;
@@ -32,7 +40,7 @@
       font-size: 1.5rem;
       font-weight: bold;
     }
-    
+
     .nav-link {
       color: white !important;
     }
@@ -43,7 +51,7 @@
     }
 
     section {
-      padding: 90px 25px 40px;
+      padding: 100px 25px 40px;
       animation: fadeIn 0.7s ease;
     }
 
@@ -64,8 +72,8 @@
 
     .card-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
     }
 
     .card {
@@ -77,12 +85,13 @@
       transition: all 0.3s ease;
       cursor: pointer;
       position: relative;
-      padding-bottom: 5px;
+      display: flex;
+      flex-direction: column;
     }
 
     .card img {
       width: 100%;
-      height: 150px;
+      height: 180px;
       object-fit: cover;
       border-bottom: 1px solid rgba(255,255,255,0.04);
     }
@@ -90,18 +99,22 @@
     .card-content {
       padding: 10px 12px;
       text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .card-content h4 {
       color: #fff;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       margin-bottom: 4px;
     }
 
     .card-content p {
       color: #d8d8d8;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       margin: 2px 0;
     }
 
@@ -129,7 +142,7 @@
       background: #ffd86b;
       color: #000;
       font-weight: 700;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       padding: 3px 6px;
       border-radius: 4px;
     }
@@ -143,13 +156,14 @@
       align-items: center;
       z-index: 2000;
       color: #fff;
+      padding: 15px;
     }
 
     .compare-box {
       background: #1a1a1a;
       border-radius: 10px;
       padding: 18px;
-      width: 92%;
+      width: 100%;
       max-width: 750px;
       box-shadow: 0 0 30px rgba(255, 215, 100, 0.25);
       animation: modalFade 0.3s ease;
@@ -176,6 +190,15 @@
       align-items: start;
     }
 
+    @media(max-width: 600px) {
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+      .card img {
+        height: 140px;
+      }
+    }
+
     .compare-item {
       text-align: center;
       background: rgba(255,255,255,0.03);
@@ -194,12 +217,12 @@
     }
 
     .compare-item h4 {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom: 4px;
     }
 
     .compare-item p {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #cfcfcf;
       margin: 2px 0;
     }
@@ -225,16 +248,16 @@
     }
 
     .social-icon {
-  color: #ccc;
-  margin: 0 8px;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-.social-icon:hover {
-  color: #d4af37;
-}
+      color: #ccc;
+      margin: 0 8px;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    .social-icon:hover {
+      color: #d4af37;
+    }
 
-#logoutBtn {
+    #logoutBtn {
       margin-left: 10px;
       padding: 8px 16px;
       width: 100px;
@@ -253,10 +276,8 @@
       color: #d4af37;
       box-shadow: 0 0 18px rgba(212,175,55,0.4);
     }
-
   </style>
 </head>
-
 <body>
 
   <!-- ========== NAVBAR ========== -->
@@ -281,56 +302,56 @@
 
   <section>
     <h6 class="text-center mb-4 text-light">Select any <span class="text-warning">two sofas</span> to compare their beauty & craftsmanship.</h6>
-    <div id="compare-container"></div>
+    <div class="card-container" id="compare-container"></div>
   </section>
 
   <!-- ========== FOOTER ========== -->
-<footer style="background:#0e0e0e; color:#ccc; padding:60px 20px 25px; margin-top:100px;">
-  <div class="container">
-    <div class="row text-center text-md-start align-items-start">
+  <footer style="background:#0e0e0e; color:#ccc; padding:60px 20px 25px; margin-top:100px;">
+    <div class="container">
+      <div class="row text-center text-md-start align-items-start">
 
-      <!-- Column 1 -->
-      <div class="col-md-4 mb-4">
-        <h3 style="color:#d4af37; font-weight:700;">Oxford Sofas</h3>
-        <p style="font-size:15px; line-height:1.7;">
-          Experience the finest in Italian craftsmanship elegant, luxurious, and built to last. Oxford Sofas brings timeless comfort to every home.
-        </p>
-      </div>
+        <!-- Column 1 -->
+        <div class="col-md-4 mb-4">
+          <h3 style="color:#d4af37; font-weight:700;">Oxford Sofas</h3>
+          <p style="font-size:15px; line-height:1.7;">
+            Experience the finest in Italian craftsmanship elegant, luxurious, and built to last. Oxford Sofas brings timeless comfort to every home.
+          </p>
+        </div>
 
-      <!-- Column 2 -->
-      <div class="col-md-4 mb-4">
-        <h5 style="color:#d4af37; margin-bottom:15px;">Quick Links</h5>
-        <ul style="list-style:none; padding:0; line-height:2;">
-          <li><a href="Home.html" style="text-decoration:none; color:#ccc;">Home</a></li>
-          <li><a href="Brand.html" style="text-decoration:none; color:#ccc;">Brands</a></li>
-          <li><a href="Compare.html" style="text-decoration:none; color:#ccc;">Compare</a></li>
-          <li><a href="Contact.html" style="text-decoration:none; color:#ccc;">Contact</a></li>
-        </ul>
-      </div>
+        <!-- Column 2 -->
+        <div class="col-md-4 mb-4">
+          <h5 style="color:#d4af37; margin-bottom:15px;">Quick Links</h5>
+          <ul style="list-style:none; padding:0; line-height:2;">
+            <li><a href="Home.html" style="text-decoration:none; color:#ccc;">Home</a></li>
+            <li><a href="Brand.html" style="text-decoration:none; color:#ccc;">Brands</a></li>
+            <li><a href="Compare.html" style="text-decoration:none; color:#ccc;">Compare</a></li>
+            <li><a href="Contact.html" style="text-decoration:none; color:#ccc;">Contact</a></li>
+          </ul>
+        </div>
 
-      <!-- Column 3 -->
-      <div class="col-md-4 mb-4">
-        <h5 style="color:#d4af37; margin-bottom:15px;">Contact Us</h5>
-        <p><i class="bi bi-geo-alt-fill" style="color:#d4af37;"></i> Karachi, Pakistan</p>
-        <p><i class="bi bi-envelope-fill" style="color:#d4af37;"></i> info@oxfordsofas.com</p>
-        <p><i class="bi bi-telephone-fill" style="color:#d4af37;"></i> +92 321 4567890</p>
+        <!-- Column 3 -->
+        <div class="col-md-4 mb-4">
+          <h5 style="color:#d4af37; margin-bottom:15px;">Contact Us</h5>
+          <p><i class="bi bi-geo-alt-fill" style="color:#d4af37;"></i> Karachi, Pakistan</p>
+          <p><i class="bi bi-envelope-fill" style="color:#d4af37;"></i> info@oxfordsofas.com</p>
+          <p><i class="bi bi-telephone-fill" style="color:#d4af37;"></i> +92 321 4567890</p>
 
-        <!-- Social Icons -->
-        <div style="margin-top:20px;">
+          <!-- Social Icons -->
+          <div style="margin-top:20px;">
             <a href="https://www.facebook.com/" class="social-icon"><i class="bi bi-facebook"></i></a>
-          <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.youtube.com/" class="social-icon"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <hr style="border-color:#333; margin:30px 0;">
+      <hr style="border-color:#333; margin:30px 0;">
 
-    <div class="text-center" style="font-size:14px;">
-      © 2025 <span style="color:#d4af37;">Oxford Sofas</span> All Rights Reserved by Oxford Sofas<br>
+      <div class="text-center" style="font-size:14px;">
+        © 2025 <span style="color:#d4af37;">Oxford Sofas</span> All Rights Reserved<br>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <div class="compare-modal" id="compareModal">
     <span class="close-btn" id="closeCompare">&times;</span>
@@ -342,125 +363,139 @@
 
   <script>
     const allSofas = [
-      { brand: "Poltrona Frau", 
-      name: "Chester Sofa", 
-      img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/h/e/chester-sofa/02_thumbnails/01_chester-sofa.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg", 
-      price: "Rs. 650,000", 
-      material: "Italian Leather" },
-
-      { brand: "Poltrona Frau", 
-      name: "Let It Be Sofa", 
-      img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/02_thumbnails/05_let-it-be-sofa.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg", 
-      price: "Rs. 720,000", 
-      material: "Top Grain Leather" },
-
-      { brand: "Poltrona Frau", 
-      name: "Get Back Sofa", 
-      img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/g/e/t/get-back-sofa/02_thumbnails/29_get-back-sofa.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg", 
-      price: "Rs. 890,000", 
-      material: "Soft Leather Fabric" },
-
-      { brand: "Poltrona Frau", 
-      name: "Parka Sofa", 
-      img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/p/a/r/parka-sofa/01_hero/parka-sofa-v1@mobile.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg", price: "Rs. 950,000", 
-      material: "Natural Leather" },
-
-  {brand: "Poltrona Frau",
-  "name": "Chester One Sofa", 
-  "price": "Rs. 420,000", 
-  "material": "Hand-Tufted Leather | Beech Wood Frame", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/h/e/chester-one-sofa/02_thumbnails/01_chester-one-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Let It Be Sofa", 
-  "price": "Rs. 385,000", 
-  "material": "Italian Leather | Steel Legs", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/01_hero/let-it-be-sofa-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Times Lounge", 
-  "price": "Rs. 360,000", 
-  "material": "Premium Fabric | Metal Base", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/t/i/m/times-lounge-ottoman/02_thumbnails/001_times-lounge-ottoman.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Grantorino Sofa", 
-  "price": "Rs. 440,000", 
-  "material": "Soft Pelle Frau® Leather | Wood Frame", 
-  "img": "https://www.gerosadesign.com/images/prodotti/divani/poltrona-frau/grantorino-poltrona-frau/grantorino-poltrona-frau1.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Archibald Armchair", 
-  "price": "Rs. 310,000", 
-  "material": "Full-Grain Leather | Metal Base", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/a/r/c/archibald-armchair/02_thumbnails/09_archibald-armchair.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "John-John Sofa", 
-  "price": "Rs. 395,000", 
-  "material": "Italian Leather | Steel Structure", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/j/o/h/john-john-sofa/02_thumbnails/03_john-john-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Claydon Sofa", 
-  "price": "Rs. 350,000", 
-  "material": "Natural Fabric | Wooden Legs", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/l/a/clayton-sofa/02_thumbnails/01_clayton-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Cestlavie Sofa", 
-  "price": "Rs. 430,000", 
-  "material": "Luxury Leather | Handmade Stitching", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/e/s/cestlavie-small-table-with-storage/01_hero/cestlavie-small-table-with-storage-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Martha Armchair", 
-  "price": "Rs. 295,000", 
-  "material": "Soft Fabric | Walnut Base", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/m/a/r/martha-armchair/02_thumbnails/06_martha-armchair.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Fidelio Sofa", 
-  "price": "Rs. 410,000", 
-  "material": "Top-Grain Leather | Steel Frame", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/f/i/d/fidelio-multimedia-cabinet/03_concept/01_fidelio-multimedia-cabinet.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Happy Jack Sofa", 
-  "price": "Rs. 370,000", 
-  "material": "Fabric & Leather Mix | Wood Legs", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/h/a/p/happy-jack-sofa/01_hero/happy-jack-sofa-v1%40mobile.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Soufflé Sofa", 
-  "price": "Rs. 450,000", 
-  "material": "Plush Leather | Metal Legs", 
-  "img": "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/02_thumbnails/05_let-it-be-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Massimo System Sofa", 
-  "price": "Rs. 400,000", 
-  "material": "Modular Fabric | Aluminum Base", 
-  "img": "https://images.openai.com/thumbnails/url/xL1_bHicu5mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5OSsnyCzXyKQsKd82uysoJN01LKnLxd07zzSryrywv0PWJMHCLCC3yjwouVysGAK1NJPc"},
-
-  {brand: "Poltrona Frau",
-  "name": "Montera Sofa", 
-  "price": "Rs. 385,000", 
-  "material": "Saddle Leather | Ash Wood Legs", 
-  "img": "https://www.gerosadesign.com/images/prodotti/sedie/poltrona-frau/montera-poltrona-frau/montera-poltrona-frau2.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Leplì Bench", 
-  "price": "Rs. 275,000", 
-  "material": "Velvet Upholstery | Brass Base", 
-  "img": "https://img.edilportale.com/product-thumbs/b_lepli-leather-bench-poltrona-frau-244042-rel20ac6088.jpg"},
-
-  {brand: "Poltrona Frau",
-  "name": "Dezza Sofa", 
-  "price": "Rs. 335,000", 
-  "material": "Classic Leather | Tapered Wood Legs", 
-  "img": "https://images.openai.com/thumbnails/url/P6IOOHicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw7RLbYwzYhPizdPCSv3T4tPrUrx8DFKqqjKz_VxK6uKys0qtwhJjrAwrAx2VCu2NTQAAB22Jas"},
-
+      {
+    brand: "Poltrona Frau",
+    name: "Chester Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/h/e/chester-one-sofa/02_thumbnails/01_chester-one-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    price: "Rs. 650,000",
+    material: "Italian Leather"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Let It Be Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/01_hero/let-it-be-sofa-v1@mobile.jpg",
+    price: "Rs. 385,000",
+    material: "Italian Leather | Steel Legs"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Get Back Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/g/e/t/get-back-sofa/02_thumbnails/29_get-back-sofa.jpg",
+    price: "Rs. 890,000",
+    material: "Soft Leather Fabric"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Parka Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/p/a/r/parka-sofa/02_thumbnails/0003_parka-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    price: "Rs. 950,000",
+    material: "Natural Leather"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Chester One Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/h/e/chester-one-sofa/03_concept/02_chester-one-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    price: "Rs. 420,000",
+    material: "Hand-Tufted Leather | Beech Wood Frame"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Times Lounge",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/t/i/m/times-lounge-ottoman/02_thumbnails/001_times-lounge-ottoman.jpg",
+    price: "Rs. 360,000",
+    material: "Premium Fabric | Metal Base"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Grantorino Sofa",
+    img: "https://www.gerosadesign.com/images/prodotti/divani/poltrona-frau/grantorino-poltrona-frau/grantorino-poltrona-frau1.jpg",
+    price: "Rs. 440,000",
+    material: "Soft Pelle Frau® Leather | Wood Frame"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Archibald Armchair",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/a/r/c/archibald-armchair/02_thumbnails/001_archibald-armchair.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    price: "Rs. 310,000",
+    material: "Full-Grain Leather | Metal Base"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "John-John Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/j/o/h/john-john-sofa/02_thumbnails/03_john-john-sofa.jpg",
+    price: "Rs. 395,000",
+    material: "Italian Leather | Steel Structure"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Claydon Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/l/a/clayton-sofa/02_thumbnails/01_clayton-sofa.jpg",
+    price: "Rs. 350,000",
+    material: "Natural Fabric | Wooden Legs"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Cestlavie Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/c/e/s/cestlavie-small-table-with-storage/01_hero/cestlavie-small-table-with-storage-v1.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    price: "Rs. 430,000",
+    material: "Luxury Leather | Handmade Stitching"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Martha Armchair",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/m/a/r/martha-armchair/02_thumbnails/06_martha-armchair.jpg",
+    price: "Rs. 295,000",
+    material: "Soft Fabric | Walnut Base"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Fidelio Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/f/i/d/fidelio-multimedia-cabinet/03_concept/01_fidelio-multimedia-cabinet.jpg",
+    price: "Rs. 410,000",
+    material: "Top-Grain Leather | Steel Frame"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Happy Jack Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/h/a/p/happy-jack-sofa/01_hero/happy-jack-sofa-v1@mobile.jpg",
+    price: "Rs. 370,000",
+    material: "Fabric & Leather Mix | Wood Legs"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Soufflé Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/l/e/t/let-it-be-sofa/02_thumbnails/05_let-it-be-sofa.jpg",
+    price: "Rs. 450,000",
+    material: "Plush Leather | Metal Legs"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Massimo System Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/m/a/s/massimosistema-sofa/02_thumbnails/15_massimosistema-sofa.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    price: "Rs. 400,000",
+    material: "Modular Fabric | Aluminum Base"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Montera Sofa",
+    img: "https://www.poltronafrau.com/content/dam/ld/poltronafrau/products/m/o/n/montera-small-armchair/02_thumbnails/03_montera-small-armchair.jpg/jcr%3Acontent/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    price: "Rs. 385,000",
+    material: "Saddle Leather | Ash Wood Legs"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Leplì Bench",
+    img: "https://img.edilportale.com/product-thumbs/b_lepli-leather-bench-poltrona-frau-244042-rel20ac6088.jpg",
+    price: "Rs. 275,000",
+    material: "Velvet Upholstery | Brass Base"
+  },
+  {
+    brand: "Poltrona Frau",
+    name: "Dezza Sofa",
+    img: "https://images.openai.com/thumbnails/url/P6IOOHicu5meUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw7RLbYwzYhPizdPCSv3T4tPrUrx8DFKqqjKz_VxK6uKys0qtwhJjrAwrAx2VCu2NTQAAB22Jas",
+    price: "Rs. 335,000",
+    material: "Classic Leather | Tapered Wood Legs"
+  },
       { brand: "Ligne Roset", 
       name: "Togo Sofa", 
       img: "https://www.ligne-roset.com/media/ligne_roset_us/1003xz_W.jpg", 
@@ -554,7 +589,7 @@
   "name": "Titan Recliner", 
   "price": "Rs. 365,000", 
   "material": "Italian Leather", 
-  "img": "https://ik.imagekit.io/kuj9zqlrx0or/no_bg_691e5b6d-2cf5-4a49-a98f-8a68a007ab5d.jpg"},
+  "img": "https://images.openai.com/static-rsc-1/eh7poGqDwRsKGTZCieq1OEYAUhUHsRyfSfcVLv5g_fF9UsBIN2bWi7G5IhjG92IHqO4X2PjWhFbfEWGeQk-AEkyTVAsQ2yXv6gC-PEb-N4Ym_iBZZdKt2dtCfq3S4mOzauBd6f6J5Y5bO9HWSkvmnQ"},
 
   {brand: "Ligne Roset",
   "name": "Apollo Plus Sofa", 
@@ -572,7 +607,7 @@
   "name": "Phoenix Recliner", 
   "price": "Rs. 320,000", 
   "material": "Soft Grain Leather", 
-  "img": "https://furniturefair.net/cdn/shop/files/C3CA27D4-7AAC-4059-BC76-722278C227D3_398212ff-21b4-4229-a949-2426b2db8f20_1200x.jpg?v=1756589221"},
+  "img": "https://images.openai.com/static-rsc-1/1H5czo-dBXb6YvmiHzXDH71wJ6McMh694Lmd1hSnK4dGvc9IoUVwp-lIR4XL1yyV7C4mKB2aXb6DHZpfbwNROhVWyibQPbYxSsgkqHfXhbH2WWiBR1J4EHHXpqs77kHe-42lRvnEFRJKU9mKn20EjQ"},
 
   {brand: "Ligne Roset",
   "name": "Lyra Plus Sofa", 
@@ -625,7 +660,7 @@
       "name": "Cestone Sofa", 
       "price": "Rs. 510,000", 
       "material": "Leather Woven Back | Fabric Cushions", 
-      "img": "https://images.openai.com/thumbnails/url/zR2Z-3icu5mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4MCo6KMDK2dAsKD3EtKgvSDQ7yKC920k1yLw1wLTBxd0otczHNMfX1DA9NVysGAIRuI3o"},
+      "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2Fabbfa1701b56f6dc08bf3f8b004c9619bbe15823.1680x1680.webp%2FFLEXFORM_CESTONE_1.png&w=3840"},
 
       { brand: "Flexform", 
       "name": "Lario Sofa", 
@@ -669,7 +704,7 @@
     "name": "Flexform Supermax Sofa",
     "price": "Rs. 510,000",
     "material": "Italian Leather | High-Back Design | Steel Frame",
-    "img": "https://boulevard.co/wp-content/uploads/2023/10/flexform-2-19.png"
+    "img": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fapp.onpage.it%2Fapi%2Fstorage%2Fe8fcaf4666388256e864b6090fe3868da3904776.1680x1680.webp%2F02B103_SUPERMAX_STANDALONE_01.png&w=3840"
   },
 
   { brand: "Flexform", 
@@ -829,92 +864,61 @@
     ];
 
     const container = document.getElementById('compare-container');
-    const compareModal = document.getElementById('compareModal');
     const compareGrid = document.getElementById('compareGrid');
-    const closeCompare = document.getElementById('closeCompare');
+    const modal = document.getElementById('compareModal');
+    const closeBtn = document.getElementById('closeCompare');
     let selected = [];
 
-    function renderSofas() {
-      const grouped = {};
-      allSofas.forEach(sofa => {
-        if (!grouped[sofa.brand]) grouped[sofa.brand] = [];
-        grouped[sofa.brand].push(sofa);
+    function renderCards() {
+      allSofas.forEach((sofa, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+          <img src="${sofa.img}" alt="${sofa.name}">
+          <div class="card-content">
+            <h4>${sofa.name}</h4>
+            <p>${sofa.brand}</p>
+            <p>${sofa.price}</p>
+          </div>`;
+        card.addEventListener('click', () => selectCard(index, card));
+        container.appendChild(card);
       });
-
-      for (const brand in grouped) {
-        const section = document.createElement("div");
-        section.innerHTML = `
-          <h3 class='brand-title'>${brand}</h3>
-          <div class='card-container'></div>
-        `;
-        const cardContainer = section.querySelector('.card-container');
-
-        grouped[brand].forEach(sofa => {
-          const card = document.createElement("div");
-          card.className = "card";
-          card.innerHTML = `
-            <img src="${sofa.img}" alt="${sofa.name}">
-            <div class="card-content">
-              <h4>${sofa.name}</h4>
-              <p>${sofa.material}</p>
-              <p class="text-warning fw-semibold">${sofa.price}</p>
-            </div>
-          `;
-          card.onclick = () => selectSofa(sofa, card);
-          cardContainer.appendChild(card);
-        });
-
-        container.appendChild(section);
-      }
     }
 
-    function selectSofa(sofa, card) {
-      if (selected.includes(sofa)) {
-        selected = selected.filter(s => s !== sofa);
-        card.classList.remove("selected");
+    function selectCard(index, card) {
+      if (selected.includes(index)) {
+        selected = selected.filter(i => i !== index);
+        card.classList.remove('selected');
       } else if (selected.length < 2) {
-        selected.push(sofa);
-        card.classList.add("selected");
+        selected.push(index);
+        card.classList.add('selected');
       }
-      if (selected.length === 2) openCompare();
+      if (selected.length === 2) showCompareModal();
     }
 
-    function openCompare() {
+    function showCompareModal() {
       compareGrid.innerHTML = '';
-      selected.forEach(sofa => {
+      selected.forEach(i => {
+        const sofa = allSofas[i];
         const div = document.createElement('div');
-        div.className = 'compare-item';
-        div.innerHTML = `
-          <img src="${sofa.img}">
-          <h4>${sofa.brand} — ${sofa.name}</h4>
-          <p><b>Material:</b> ${sofa.material}</p>
-          <p><b>Price:</b> ${sofa.price}</p>
-        `;
+        div.classList.add('compare-item');
+        div.innerHTML = `<img src="${sofa.img}" alt="${sofa.name}">
+          <h4>${sofa.name}</h4>
+          <p>${sofa.brand}</p>
+          <p>${sofa.price}</p>
+          <p>${sofa.material}</p>`;
         compareGrid.appendChild(div);
       });
-      compareModal.style.display = 'flex';
+      modal.style.display = 'flex';
     }
 
-    closeCompare.onclick = () => {
-      compareModal.style.display = 'none';
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.querySelectorAll('.card.selected').forEach(card => card.classList.remove('selected'));
       selected = [];
-      document.querySelectorAll('.card.selected').forEach(c => c.classList.remove('selected'));
-    };
+    });
 
-    renderSofas();
-
-    // Prevent access if not logged in
-  if (!localStorage.getItem("loggedInUser")) {
-    // window.location.href = "Login.html";
-    document.getElementById("logoutBtn").innerText = "Log In"
-  }
-
-  // Logout button logic
-  document.getElementById("logoutBtn").onclick = () => {
-    localStorage.removeItem("loggedInUser");
-    window.location.href = "Login.html";
-  };
-
+    renderCards();
   </script>
 </body>
 </html>

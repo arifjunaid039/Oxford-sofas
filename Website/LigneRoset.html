@@ -12,6 +12,14 @@
     <link rel="icon" href="Images/LOGO.jpg">
 
    <style>
+    button, a, img
+    {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #111, #1a1a1a);
@@ -57,51 +65,91 @@
     }
 
  /* ========== CARD GRID ========== */
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-    }
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 28px;
+    align-items: stretch;
+  }
 
-    .card {
-      border: none;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
+  .card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1b1b1b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    color: #fafafa;
+    height: 100%;
+  }
 
- .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-}
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 28px rgba(212, 175, 55, 0.45);
+  }
 
+  .card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 2px solid #d4af37;
+  }
 
+  .card-content {
+    flex-grow: 1;
+    padding: 18px;
+    color: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  .card-content h4,
+  .card-content h5,
+  .card-content p {
+    color: #fff !important;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
+    margin: 5px 0;
+  }
+
+  .card-content h4 {
+    font-size: 1.2rem;
+    color: #d4af37 !important;
+  }
+
+  .btn {
+    background-color: #d4af37;
+    color: white;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: 15px;
+  }
+
+  .btn:hover {
+    background: #222;
+    color: #d4af37;
+    box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+  }
+
+  @media (max-width: 768px) {
     .card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 15px;
+      height: 180px;
     }
 
     .btn {
-      background-color: #d4af37;
-      color: white;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 5px;
-      display: inline-block;
-      transition: 0.3s;
+      padding: 8px 14px;
+      font-size: 0.9rem;
     }
-
-    .btn:hover {
-      background: #222;
-      color: #d4af37;
-    }
-
+  }
     .more-btn {
       display: block;
       width: fit-content;
@@ -200,7 +248,7 @@
   <!-- MAIN SECTION -->
   <section>
     <div class="text-center">
-      <h2 class="brand-title">Lignetroset Collection</h2>
+      <h2 class="brand-title">Lignet Roset Collection</h2>
     </div>
 
     <div class="card-container" id="sofaCards">
@@ -316,7 +364,7 @@
   {"name": "Titan Recliner", 
   "price": "Rs. 365,000", 
   "material": "Italian Leather", 
-  "img": "https://ik.imagekit.io/kuj9zqlrx0or/no_bg_691e5b6d-2cf5-4a49-a98f-8a68a007ab5d.jpg"},
+  "img": "https://furniturefair.net/cdn/shop/files/743-61_in_210-15_1200x.jpg?v=1755190022"},
 
   {"name": "Apollo Plus Sofa", 
   "price": "Rs. 340,000", 
@@ -331,7 +379,7 @@
   {"name": "Phoenix Recliner", 
   "price": "Rs. 320,000", 
   "material": "Soft Grain Leather", 
-  "img": "https://furniturefair.net/cdn/shop/files/C3CA27D4-7AAC-4059-BC76-722278C227D3_398212ff-21b4-4229-a949-2426b2db8f20_1200x.jpg?v=1756589221"},
+  "img": "https://ncf.co.uk/cdn/shop/files/Phoenix_3_Seater_Side_Angle.jpg?crop=center&height=1127&v=1762342455&width=1500"},
 
   {"name": "Lyra Plus Sofa", 
   "price": "Rs. 375,000", 
@@ -352,7 +400,7 @@
           <h5>${item.name}</h5>
           <p><strong>Material:</strong> ${item.material}</p>
           <p class="price">${item.price}</p>
-          <a href="Booking.html" class="btn">Buy Now</a>
+          <a href="Booking.html" class="btn">Book Now</a>
         </div>
       `;
       container.appendChild(card);
